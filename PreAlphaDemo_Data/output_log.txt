@@ -1,0 +1,75 @@
+Initialize engine version: 5.6.1f1 (2860b30f0b54)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce 920M (ID=0x1299)
+    Vendor:   NVIDIA
+    VRAM:     2020 MB
+    Driver:   22.21.13.8165
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.089 seconds
+Platform assembly: C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\System.dll (this message is harmless)
+desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.543754 ms
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 45ec -> priority: 1 
+  Thread -> id: 45e8 -> priority: 1 
+Initialize engine version: 5.6.1f1 (2860b30f0b54)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce 920M (ID=0x1299)
+    Vendor:   NVIDIA
+    VRAM:     2020 MB
+    Driver:   22.21.13.8165
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.053 seconds
+Platform assembly: C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\moyse\Desktop\Escola\2017\Projeto Fase 1\PreAlphaDemo_Data\Managed\System.dll (this message is harmless)
+desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 5.933355 ms
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 4608.
+Total: 1.706574 ms (FindLiveObjects: 0.262191 ms CreateObjectMapping: 0.091440 ms MarkObjects: 0.564970 ms  DeleteObjects: 0.787039 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 4.679783 ms
+
+Unloading 178 unused Assets to reduce memory usage. Loaded Objects now: 538.
+Total: 3.850289 ms (FindLiveObjects: 0.056916 ms CreateObjectMapping: 0.038722 ms MarkObjects: 0.274787 ms  DeleteObjects: 3.479396 ms)
+

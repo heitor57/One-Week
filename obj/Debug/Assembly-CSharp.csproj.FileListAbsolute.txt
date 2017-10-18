@@ -1,0 +1,68 @@
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\nunit.framework.dll
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\RAIN.dll
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\RAINMetaform.dll
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\UnityEditor.dll
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\UnityEngine.Analytics.dll
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\UnityEngine.dll
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\UnityEngine.HoloLens.dll
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\UnityEngine.Networking.dll
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\UnityEngine.TestRunner.dll
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\UnityEngine.UI.dll
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\UnityEngine.VR.dll
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\Unity.SerializationLogic.dll
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\Unity.UNetWeaver.dll
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\Unity.CecilTools.dll
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\UnityEngine.xml
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\UnityEditor.xml
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\UnityEngine.UI.xml
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\UnityEngine.Networking.xml
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\UnityEngine.TestRunner.xml
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\nunit.framework.xml
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\UnityEngine.Analytics.xml
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\UnityEngine.HoloLens.xml
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\Temp\bin\Debug\UnityEngine.VR.xml
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\obj\Debug\Assembly-CSharp.dll
+C:\Users\juanf\Desktop\Jogo Conceito\MOYSES\Projeto Fase 1\obj\Debug\Assembly-CSharp.pdb
+C:\Users\moyse\Desktop\Escola\2017\2017\MOYSES\Projeto Fase 1\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\moyse\Desktop\Escola\2017\2017\MOYSES\Projeto Fase 1\obj\Debug\Assembly-CSharp.dll
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\obj\Debug\Assembly-CSharp.dll
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\nunit.framework.dll
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\RAIN.dll
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\RAINMetaform.dll
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\UnityEditor.dll
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\UnityEngine.Analytics.dll
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\UnityEngine.dll
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\UnityEngine.HoloLens.dll
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\UnityEngine.Networking.dll
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\UnityEngine.TestRunner.dll
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\UnityEngine.UI.dll
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\UnityEngine.VR.dll
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\Unity.SerializationLogic.dll
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\Unity.UNetWeaver.dll
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\Unity.CecilTools.dll
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\UnityEngine.xml
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\UnityEditor.xml
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\UnityEngine.UI.xml
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\UnityEngine.Networking.xml
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\UnityEngine.TestRunner.xml
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\nunit.framework.xml
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\UnityEngine.Analytics.xml
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\UnityEngine.HoloLens.xml
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\Temp\bin\Debug\UnityEngine.VR.xml
+C:\Users\moyse\Desktop\Escola\2017\2017\Projeto Fase 1\obj\Debug\Assembly-CSharp.pdb

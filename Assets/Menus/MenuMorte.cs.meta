@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 05375f1ddece4fc42afb3d48a38e4fba
+timeCreated: 1505400537
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - Tela: {fileID: 1901834475686584, guid: 4751b59d176165c4eb87b9d4aad20f21, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

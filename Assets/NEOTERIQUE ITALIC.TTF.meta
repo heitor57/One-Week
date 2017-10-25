@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: f17428fa491c650478be415c1fca8404
+timeCreated: 1499170507
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: NEOTERIQUE
+  fontNames:
+  - NEOTERIQUE
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 67559b574df99b944b2bf7e3d34fe24c, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

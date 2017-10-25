@@ -74,8 +74,7 @@ public class Sword : MonoBehaviour {
 		this.attachPointangle += new Vector3 (140f, +35f,0);
 	}
 	void OnTriggerEnter(Collider col){
-
-		Debug.Log (col.gameObject);
+		
 		if (col.GetComponent<Destrutiveis>()!= null && atacando==true && col.gameObject!=owner.transform.parent.gameObject ) {
 			col.GetComponent<Destrutiveis>().perdeVida (dmg,GetComponentInParent<CharacterBase>());
 			//(col.gameObject as NotAlive).perdeVida (dmg);

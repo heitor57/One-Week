@@ -12,7 +12,7 @@ public abstract class AutoConfigNPC : AutoConfig {
 		base.ConfigStart(); 
 
 		// navmeshagent
-		//NavMeshAgent navmeshagent = gameObject.GetComponent<NavMeshAgent>();
+
 		NavMeshAgent navmeshagent = gameObject.AddComponent<NavMeshAgent>();
 		navmeshagent.autoBraking = false;
 		navmeshagent.angularSpeed = 999;
@@ -21,6 +21,13 @@ public abstract class AutoConfigNPC : AutoConfig {
 
 
 		AIRig ai = GetComponent<AIRig> ();
+		//Adicionando partes do corpo no animador
+		Transform tempTransform = transform.Find("mixamorig:Hips").Find("mixamorig:Spine").Find("mixamorig:Spine1").Find("mixamorig:Spine2").Find("mixamorig:Neck");
+		((BasicAnimator)ai.AI.Animator).Neck.Joint = tempTransform;
+		tempTransform = tempTransform.Find ("mixamorig:Head");
+		((BasicAnimator)ai.AI.Animator).Head.Joint = tempTransform;
+		((BasicAnimator)ai.AI.Animator).LeftEye.Joint = tempTransform.Find ("mixamorig:LeftEye");
+		((BasicAnimator)ai.AI.Animator).RightEye.Joint = tempTransform.Find ("mixamorig:RightEye");
 		//Adicionando sensores
 		VisualSensor tempSensor = new VisualSensor ();
 		tempSensor.SensorName = "Visual Sensor";

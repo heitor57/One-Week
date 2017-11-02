@@ -356,6 +356,10 @@ public class PlayerInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		UpdateStmBar ();
+		UpdateHPBar ();
+		UpdateXPBar ();
+
         if (Input.GetKeyDown(inputManagerDatabase.CharacterSystemKeyCode))
         {
             if (!characterSystem.activeSelf)
@@ -399,13 +403,9 @@ public class PlayerInventory : MonoBehaviour
                 craftSystemInventory.closeInventory();
             }
         }
-		if ((!inventory.activeSelf) && (!characterSystem.activeSelf)) {
-			Screen.lockCursor=true;
+		if ((!inventory.activeSelf) && (!characterSystem.activeSelf) && !(GameObject.Find ("Camera").GetComponent<MenuPause>().paro())) {
+			Screen.lockCursor = true;
 		}
-
-		UpdateStmBar ();
-		UpdateHPBar ();
-		UpdateXPBar ();
     }
 
 }

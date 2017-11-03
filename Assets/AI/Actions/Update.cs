@@ -13,35 +13,28 @@ public class Update : RAINAction
 {
 	int time;
 	int i,j;
-
+	List<AboutAnimal> aboutanimal;
 	List<AboutPerson> aboutperson;
-	SerHumano aboutme;
-	Dictionary<AboutPerson,bool> alreadyattacked;
+	SerVivo aboutme;
+	Dictionary<AboutAnimal,bool> alreadyattacked;
 
 	public override void Start(RAIN.Core.AI ai)
     {
-		/*
-		tempfloat = new float[Constants.amountfeelings];
-		tempfloat[Constants.courage] = persontemp.GetComponent<SerHumano>().GetCoragem();
-		tempfloat[Constants.charisma] = persontemp.GetComponent<SerHumano>().GetCarisma();
-		tempfloat[Constants.intimidation] = persontemp.GetComponent<SerHumano>().GetAmeaca();
-		tempfloat[Constants.goodness] = persontemp.GetComponent<SerHumano>().GetBondade();
-		tempfloat [Constants.leadership] = persontemp.GetComponent<SerHumano> ().GetLideranca ();
-		tempfloat[Constants.violency] = 0;// implementado porem ele nao tem uma opiniao sobre a violencia
-		aboutperson.Add (new AboutPerson(persontemp,
-			tempfloat, persontemp.GetComponent<CharacterBase>(),persontemp.GetComponent<SerHumano> ().GetFacçao ()));
-		alreadyattacked.Add (aboutperson[aboutperson.Count -1],false);
-		*/
-		aboutme = ai.Body.GetComponent<SerHumano> ();
-		aboutperson = (List<AboutPerson>)ai.WorkingMemory.GetItem ("aboutperson");
-		alreadyattacked = ai.WorkingMemory.GetItem<Dictionary<AboutPerson,bool>> ("alreadyattacked");
+		
+		if(ai.Body.GetComponent<SerHumano> () != null){
+			aboutme = ai.Body.GetComponent<SerHumano> ();
+		}else if(ai.Body.GetComponent<SerVivo> () != null){
+			aboutme = ai.Body.GetComponent<SerVivo> ();
+		}
+		aboutanimal = (List<AboutAnimal>)ai.WorkingMemory.GetItem ("aboutanimal");
+		alreadyattacked = ai.WorkingMemory.GetItem<Dictionary<AboutAnimal,bool>> ("alreadyattacked");
 		base.Start(ai);
 
     }
 
     public override ActionResult Execute(RAIN.Core.AI ai)
     {
-		
+		aboutperson = new List<AboutPerson> ();
 		time = ai.WorkingMemory.GetItem<int>("time");
 		if (time != 1800)
 			ai.WorkingMemory.SetItem<int> ("time", time + 1);
@@ -57,41 +50,46 @@ public class Update : RAINAction
 		GameObject persontemp;
 
 
-		for (i = 0; i < aboutperson.Count; i++) 
-			if (aboutperson [i].Person == null)
-				aboutperson.RemoveAt (i);
-		
-		for ( i = 0; i < ((List<GameObject>)ai.WorkingMemory.GetItem ("person")).Count; i++) {
-			persontemp = ((List<GameObject>)ai.WorkingMemory.GetItem ("person")) [i];
+		for (i = 0; i < aboutanimal.Count; i++) {
+			if (aboutanimal [i].Target == null)
+				aboutanimal.RemoveAt (i);
 			
-			if (aboutperson.Count == 0) {
+		}
+
+		for ( i = 0; i < ((List<GameObject>)ai.WorkingMemory.GetItem ("animal")).Count; i++) {
+			persontemp = ((List<GameObject>)ai.WorkingMemory.GetItem ("animal")) [i];
+
+			if (aboutanimal.Count == 0) {
 				if (alreadyattacked.Count > 0)
 					alreadyattacked.Clear ();
 				
-				aboutperson.Add (new AboutPerson(persontemp));
-				alreadyattacked.Add (aboutperson [aboutperson.Count - 1], false);
+				aboutanimal.Add (new AboutPerson(persontemp));
+				alreadyattacked.Add (aboutanimal [aboutanimal.Count - 1], false);
 				
 			} else {
-				for (j = 0; j < aboutperson.Count; j++) {
-					if (aboutperson [j].Person == persontemp) {
+				for (j = 0; j < aboutanimal.Count; j++) {
+					if (aboutanimal [j].Target == persontemp) {
 						break;
 					}
-					if (j + 1 == aboutperson.Count) {
-						aboutperson.Add (new AboutPerson(persontemp));
-						if (!alreadyattacked.ContainsKey (aboutperson [aboutperson.Count - 1]))
-							alreadyattacked.Add (aboutperson [aboutperson.Count - 1], false);
+					if (j + 1 == aboutanimal.Count) {
+						aboutanimal.Add (new AboutPerson(persontemp));
+						if (!alreadyattacked.ContainsKey (aboutanimal [aboutanimal.Count - 1]))
+							alreadyattacked.Add (aboutanimal [aboutanimal.Count - 1], false);
 						break;
 					}
 				}
 			}
 		
 		}
-
+		for (i = 0; i < aboutanimal.Count; i++) {
+			if (aboutanimal [i].GetType () == typeof(AboutPerson))
+				aboutperson.Add ((AboutPerson)aboutanimal[i]);
+		}
 		// Pessoas que a IA consegue ver
 		List<AboutPerson> observableperson = new List<AboutPerson>(); 
-		for (i = 0; i < ((List<GameObject>)ai.WorkingMemory.GetItem ("person")).Count; i++) {
+		for (i = 0; i < ((List<GameObject>)ai.WorkingMemory.GetItem ("animal")).Count; i++) {
 			for (j = 0; j < aboutperson.Count; j++) {
-				if (aboutperson [j].Person == ai.WorkingMemory.GetItem<List<GameObject>> ("person") [i]) {
+				if (aboutperson [j].Target == ai.WorkingMemory.GetItem<List<GameObject>> ("animal") [i]) {
 					observableperson.Add (aboutperson [j]);
 					break;
 				}
@@ -116,7 +114,7 @@ public class Update : RAINAction
 			}
 			if(observableperson[i].isFriendly(aboutme) == true){ 
 				friendlyperson.Add (observableperson [i]);
-				if(observableperson[i].Person.GetComponent<AIRig>() !=null  && observableperson[i].Person.GetComponent<AIRig>().AI.WorkingMemory.GetItem<GameObject>("EnemyGo") != null){
+				if(observableperson[i].Target.GetComponent<AIRig>() !=null  && observableperson[i].Target.GetComponent<AIRig>().AI.WorkingMemory.GetItem<GameObject>("EnemyGo") != null){
 					friendlypersonwithenemy.Add (observableperson [i]);
 				}
 			}
@@ -160,17 +158,16 @@ public class Update : RAINAction
 
 
 		//Setagem dos atributos para utilização da IA
-		if (enemygo.Person != null) {
-			ai.WorkingMemory.SetItem<GameObject> ("EnemyGo", enemygo.Person);
+		if (enemygo.Target != null) {
+			ai.WorkingMemory.SetItem<GameObject> ("EnemyGo", enemygo.Target);
 			ai.WorkingMemory.SetItem<bool> ("GoBattle", enemygo.goBattle (aboutme));
-		} else if (enemyweakgo.Person != null && enemyweakperson.Count <= 3) {
-			ai.WorkingMemory.SetItem<GameObject> ("EnemyGo", enemyweakgo.Person);
+		} else if (enemyweakgo.Target != null && enemyweakperson.Count <= 3) {
+			ai.WorkingMemory.SetItem<GameObject> ("EnemyGo", enemyweakgo.Target);
 			ai.WorkingMemory.SetItem<bool> ("GoBattle", enemyweakgo.goBattle (aboutme));// poderia utilizar true
-		} else if (bestfriendlywithenemy.Person != null) {
-			GameObject bestfriendlyenemy = bestfriendlywithenemy.Person.GetComponent<AIRig> ().AI.WorkingMemory.GetItem<GameObject> ("EnemyGo");
+		} else if (bestfriendlywithenemy.Target != null) {
+			GameObject bestfriendlyenemy = bestfriendlywithenemy.Target.GetComponent<AIRig> ().AI.WorkingMemory.GetItem<GameObject> ("EnemyGo");
 			AboutPerson bestfriendlyenemyabout= new AboutPerson(bestfriendlyenemy);
 
-			Debug.Log (bestfriendlyenemyabout.PotencyTogoBattle (aboutme)+" |||| "+ bestfriendlywithenemy.PotencyToGoingHelp (aboutme));
 			if (bestfriendlywithenemy.isGoingHelp (aboutme) &&
 			    bestfriendlyenemyabout.PotencyTogoBattle (aboutme) + bestfriendlywithenemy.PotencyToGoingHelp (aboutme) >= 45) {
 				ai.WorkingMemory.SetItem<GameObject> ("EnemyGo", bestfriendlyenemy);
@@ -182,23 +179,35 @@ public class Update : RAINAction
 		} else {
 			ai.WorkingMemory.SetItem<GameObject> ("EnemyGo", null);
 		}
-		if (bestleader.Person != null) {
-			ai.WorkingMemory.SetItem<GameObject> ("Leader", bestleader.Person);
-			((SlotAspect)ai.Body.GetComponent<EntityRig> ().Entity.GetAspect ("slot")).Head = bestleader.Person;
-		} else {
-			ai.WorkingMemory.SetItem<GameObject> ("Leader", null);
-			((SlotAspect)ai.Body.GetComponent<EntityRig> ().Entity.GetAspect ("slot")).Head = null;
+		if(((SlotAspect)ai.Body.GetComponent<EntityRig> ().Entity.GetAspect ("slot")) != null){
+			if (bestleader.Target != null) {
+				ai.WorkingMemory.SetItem<GameObject> ("Leader", bestleader.Target);
+				((SlotAspect)ai.Body.GetComponent<EntityRig> ().Entity.GetAspect ("slot")).Head = bestleader.Target;
+			} else {
+				ai.WorkingMemory.SetItem<GameObject> ("Leader", null);
+				((SlotAspect)ai.Body.GetComponent<EntityRig> ().Entity.GetAspect ("slot")).Head = null;
+			}
 		}
 		// **Fim
 		// Algoritmo para visualização das caracteristicas das pessoas oo redor
         return ActionResult.SUCCESS;
     }
 
+	public AboutAnimal MostClose(List<AboutAnimal> persons,AI ai ,float radius){
+		AboutAnimal person = new AboutAnimal ();
+		for(i = 0; i < persons.Count ;i++){
+			if (Vector3.Distance (persons [i].Target.transform.position,ai.Body.transform.position) <= radius) {
+				radius = Vector3.Distance (persons[i].Target.transform.position, ai.Body.transform.position);
+				person = persons [i]; 
+			}
+		}
+		return person;
+	}
 	public AboutPerson MostClose(List<AboutPerson> persons,AI ai ,float radius){
 		AboutPerson person = new AboutPerson ();
 		for(i = 0; i < persons.Count ;i++){
-			if (Vector3.Distance (persons [i].Person.transform.position, ai.Body.transform.position) <= radius) {
-				radius = Vector3.Distance (persons[i].Person.transform.position, ai.Body.transform.position);
+			if (Vector3.Distance (persons [i].Target.transform.position,ai.Body.transform.position) <= radius) {
+				radius = Vector3.Distance (persons[i].Target.transform.position, ai.Body.transform.position);
 				person = persons [i]; 
 			}
 		}

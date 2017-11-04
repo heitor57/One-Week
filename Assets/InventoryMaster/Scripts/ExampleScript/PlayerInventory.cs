@@ -96,6 +96,7 @@ public class PlayerInventory : MonoBehaviour
 		if (item.itemType == ItemType.Weapon) {
 			
 			GameObject.Find ("CpWeapon").GetComponent<changeEquip> ().cEquip (item.itemName);
+			EquipedWeapon = item.itemModel;
 		}
     }
 
@@ -103,7 +104,7 @@ public class PlayerInventory : MonoBehaviour
 	{
 		if (item.itemType == ItemType.Weapon)
 		{
-			
+			EquipedWeapon = null;
 			GameObject.Find ("CpWeapon").GetComponent<changeEquip> ().destroi ();
 		}
     }

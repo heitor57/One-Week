@@ -106,7 +106,7 @@ public class AboutAnimal : Object {
 
 
 	public static bool isGoingHelpUnknown(SerVivo whowantstoknow){
-		if ((3*whowantstoknow.GetBondade() + 2*whowantstoknow.GetCoragem()) / 5 + whowantstoknow.currentLevel * 2 >= 55)
+		if ((whowantstoknow.GetBondade()+whowantstoknow.GetCoragem()) / 2 + whowantstoknow.currentLevel * 2 >= 75)
 			return true;
 		return false;
 	}

@@ -123,7 +123,9 @@ public class PlayerInventory : MonoBehaviour
             }
         }
     }
-
+	public Inventory getMainInventory(){
+		return mainInventory;
+	}
     void UnEquipBackpack(Item item)
     {
         if (item.itemType == ItemType.Backpack)

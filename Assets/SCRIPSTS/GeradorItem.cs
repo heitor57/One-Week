@@ -12,12 +12,10 @@ public class GeradorItem : MonoBehaviour {
 	public int j;
 	public int k;
 
-
 	// Use this for initialization
 	public void Start () {
 		teste.Add (prefab);
 		teste.Add (prefab2);
-	
 
 	}
 	
@@ -30,17 +28,18 @@ public class GeradorItem : MonoBehaviour {
 				float x = Random.Range (81.0f, 100.0f);
 				float z = Random.Range (200.0f, 255.0f);
 
-
-
 				posi.Set(x,0f,z);
-				Instantiate ((GameObject) teste[j], posi, Quaternion.Euler (rotacao));
+				Instantiate ((GameObject) teste[j], posi, Quaternion.Euler (rotacao));//mudar pra funcionar com itens da database
 			}
 			criar = false;
 		}
+
 	}
 
-	public void Criando(int k){
+	public void Criando(int k,GameObject prefa){
 		criar = true;
 		this.k = k;
+		this.prefab = prefa;
 	}
 }
+//

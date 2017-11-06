@@ -12,7 +12,7 @@ public class PlayerAttackCreatorAspect : MonoBehaviour {
 	float time_init=0.5f, time_final = 1f;//Tempo de demora de um ataque em inteiro, de acordo com o clock da plataforma.
 
 	// Use this for initialization
-	IEnumerator Wait(){
+	IEnumerator Attack(){
 		attackmaking = true;
 		yield return new WaitForSeconds (time_init);
 		VisualAspect tempAspect = new VisualAspect ("Attack");
@@ -33,7 +33,7 @@ public class PlayerAttackCreatorAspect : MonoBehaviour {
 		
 		//Cria um aspecto "Attack" e o adiciona.
 		if (Input.GetKeyDown (KeyCode.J) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown (KeyCode.Keypad2) ||Input.GetKeyDown (KeyCode.Keypad1) && attackmaking == false) {
-			StartCoroutine (Wait ());
+			StartCoroutine (Attack ());
 		}
 
 		//Gerencia o tempo que um ataque é feito.

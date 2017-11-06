@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+	<dialogos>
+		<dialogo texto="Senhor Orion, preciso de sua ajuda.">
+			<dialogo texto="Estou ouvindo.">
+				<dialogo texto="Meu pai está muito doente.">
+					<dialogo texto="Sinto muito.">
+						<dialogo texto="Estou tentando preparar um tônico para o ajudá-lo a melhorar,">
+							<dialogo texto="porém preciso de 5 cogumelos das terras centrais.">
+								<dialogo texto="Pode coletá-los para mim?">
+									<dialogo texto="Claro, assim que conseguir os cogumelos, trago para você." missao = "1"></dialogo>
+									<dialogo texto="Sinto muito, lamento novamente por seu pai,">
+										<dialogo texto="mas não posso perder meu tempo com isso."></dialogo>
+									</dialogo>
+								</dialogo>
+							</dialogo>
+						</dialogo>
+					</dialogo>
+				</dialogo>
+			</dialogo>
+		</dialogo>
+	</dialogos>

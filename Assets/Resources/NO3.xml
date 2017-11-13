@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+	<dialogos>
+		<dialogo texto="Fala">
+			<dialogo texto="Já faz muito tempo que não vou a Verus,">
+				<dialogo texto=" espero poder visitar ">
+					<dialogo texto="a capital logo novamente."></dialogo>
+				</dialogo>
+			</dialogo>	
+		</dialogo>
+	</dialogos>

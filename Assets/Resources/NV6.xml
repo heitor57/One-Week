@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+	<dialogos>
+	<dialogo texto="Fala">
+			<dialogo texto="Dizem que ainda pode-se ouvir os sussuros ">
+				<dialogo texto="daqueles que morreram no desabamento da passagem real">
+					<dialogo texto="em Viridis durante a guerra."></dialogo>
+				</dialogo>
+			</dialogo>	
+	</dialogo>
+	</dialogos>

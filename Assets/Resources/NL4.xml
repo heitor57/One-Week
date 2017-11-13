@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+	<dialogos>
+	<dialogo texto="Fala">
+		<dialogo texto="Há exatos vinte e sete anos,">
+			<dialogo texto="essa rochas cairam e selaram a passagem para o sul,">
+				<dialogo texto="maldita guerra, maldito rei."></dialogo>
+			</dialogo>
+		</dialogo>	
+	</dialogo>
+	</dialogos>

@@ -35,5 +35,16 @@ public class TesteParser{
 		return PegarFilhos();
 	}
 
+	public static string IDmissao(){
+		
+		XmlElement aux2;
+		XmlAttribute aux3;
+		aux2 = (XmlElement)root;
+		aux3 = aux2.GetAttributeNode ("missao");
+
+		return aux3.InnerText;
+	}
+
+
 
 }

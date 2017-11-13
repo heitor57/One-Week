@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+	<dialogos>
+	<dialogo texto="Fala">
+		<dialogo texto="Malditos saqueadores, ">
+			<dialogo texto="viviem invadindo a cidade,">
+				<dialogo texto="espero que possam ter um fim doloroso."></dialogo>
+			</dialogo>
+		</dialogo>	
+		</dialogo>
+	</dialogos>

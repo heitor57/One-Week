@@ -11,7 +11,7 @@ public class XMLParser {
 		List<Missao> conversa = new List<Missao> ();
 		Missao current = null;
 		while (reader.Read()) {
-			if(reader.IsStartElement("dialogo")) {
+			if(reader.IsStartElement("missao")) {
 				if(current != null){
 					conversa.Add(current);
 				}
@@ -19,32 +19,27 @@ public class XMLParser {
 			}
 			if (current != null) {
 				if (reader.IsStartElement ("id")) {
-					current.id = reader.ReadElementContentAsInt ();
+					current.id = reader.ReadElementContentAsString ();
 				}
-				if (reader.IsStartElement ("texto")) {
-					current.texto = reader.ReadElementContentAsString ();
-				}
-				if (reader.IsStartElement ("quemfala")) {
-					current.quemfala = reader.ReadElementContentAsString ();
-				}	
-				if (reader.IsStartElement ("missao")) {
+				if (reader.IsStartElement ("nome")) {
 					current.nome = reader.ReadElementContentAsString ();
 				}
-				if (reader.IsStartElement ("xp")) {
-					current.id = reader.ReadElementContentAsInt ();
+				if (reader.IsStartElement ("pedidoID")) {
+					current.pedidoID = reader.ReadElementContentAsInt ();
 				}
 				if (reader.IsStartElement ("quantidade")) {
-					current.id = reader.ReadElementContentAsInt ();
+					current.quantidade = reader.ReadElementContentAsInt ();
 				}
-				if (reader.IsStartElement ("tipo")) {
-					current.quemfala = reader.ReadElementContentAsString ();
+				if (reader.IsStartElement ("xp")) {
+					current.xp = reader.ReadElementContentAsInt ();
 				}
 				if (reader.IsStartElement ("recompensaID")) {
-					current.id = reader.ReadElementContentAsInt ();
+					current.recompensaID = reader.ReadElementContentAsInt ();
 				}
-				if (reader.IsStartElement ("pedidoID")) {
-					current.id = reader.ReadElementContentAsInt ();
+				if (reader.IsStartElement ("tipo")) {
+					current.tipo = reader.ReadElementContentAsString ();
 				}
+
 					
 			}
 

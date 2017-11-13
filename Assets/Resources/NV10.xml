@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+	<dialogos>
+	<dialogo texto="Fala">
+		<dialogo texto="Pode falar>
+			<dialogo texto="O rei vem sefrendo duras críticas, ">
+				<dialogo texto=" mas para mim,">
+					<dialogo texto="Verus ainda impõe sua força."></dialogo>
+				</dialogo>
+			</dialogo>
+		</dialogo>
+	</dialogos>

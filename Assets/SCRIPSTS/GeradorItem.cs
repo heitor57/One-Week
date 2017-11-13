@@ -21,18 +21,19 @@ public class GeradorItem : MonoBehaviour {
 	
 	// Update is called once per frame
 	public void Update () {
-		
 		if (criar == true) {
-			j = Random.Range (0, teste.Count);
+			
 			for(int i=0;i<k;i++){
-				float x = Random.Range (81.0f, 100.0f);
-				float z = Random.Range (200.0f, 255.0f);
+				float x = Random.Range (740f, 746f);
+				float z = Random.Range (-237f, -224f);
 
 				posi.Set(x,0f,z);
-				Instantiate ((GameObject) teste[j], posi, Quaternion.Euler (rotacao));//mudar pra funcionar com itens da database
+				Instantiate ((GameObject) prefab, posi, Quaternion.Euler (rotacao));//mudar pra funcionar com itens da database
+
 			}
 			criar = false;
 		}
+
 
 	}
 

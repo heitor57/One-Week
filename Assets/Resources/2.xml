@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+	<dialogos>
+		<dialogo texto="missao">
+			<dialogo texto="Capitão...">
+				<dialogo texto="Diga.">
+					<dialogo texto="Preciso que me ajude. ">
+						<dialogo texto="Minha mercadoria de vinhos foi roubada.">
+							<dialogo texto="Algumas pessoas disseram que os vândalos deixaram algumas para tráz.">
+								<dialogo texto="Pode verificar se é verdade e pega-las para mim?">
+									<dialogo texto="Posso sim, se conseguir eu lhe devolvo." missao = "2"> </dialogo>
+										<dialogo texto="Lamento por você, mas ">
+											<dialogo texto="não posso perder meu tempo com isso."></dialogo>
+										</dialogo>
+									</dialogo>
+								</dialogo>
+							</dialogo>
+						</dialogo>
+					</dialogo>
+				</dialogo>
+			</dialogo>
+	</dialogos>

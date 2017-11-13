@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+	<dialogos>
+	<dialogo texto="Fala">
+		<dialogo texto="Mesmo com tanta oposição, creio que Magnus não deva se preocupar,">
+			<dialogo texto="poi no fim das contas,">
+				<dialogo texto="todos respeitam a coroa e aquele que a carrega."></dialogo>
+			</dialogo>
+		</dialogo>	
+	</dialogo>
+	</dialogos>

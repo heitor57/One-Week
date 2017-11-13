@@ -57,7 +57,7 @@ public abstract class CharacterBase : PlayerStatsController {
 	public Animator animator;
 	//Basic attributes
 	public int currentLevel;// = GetCurrentLevel();
-	public float currentXP;// = GetCurrentXP();
+	public int currentXP;// = GetCurrentXP();
 	public BasicStats basicStats;
 
 
@@ -68,6 +68,20 @@ public abstract class CharacterBase : PlayerStatsController {
 		SetDano (basicStats.baseAttack);
 		this.currentXP = GetCurrentXP ();
 		this.currentLevel = GetCurrentLevel ();
+	}
+
+	public CharacterBase b(){
+		return this;
+	}
+
+	public void Aumentarxp(int i){
+		currentXP = GetCurrentXP () + i;
+		SetCurrentXp (currentXp);
+	}
+
+	public void Aumentarlevel(int i){
+		currentLevel = GetCurrentLevel()+i;
+		SetCurrentLevel (this.currentLevel);
 	}
 	// Update is called once per frame
 

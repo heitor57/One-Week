@@ -19,6 +19,9 @@ public class Sword : MonoBehaviour {
 		owner = transform.parent.gameObject;
 		perna();
 		dmg += GetComponentInParent<Destrutiveis>().GetDano();
+		if (owner.transform.parent != null) {
+			owner = owner.transform.parent.gameObject;
+		}
 	}
 
 	void Update()
@@ -35,6 +38,7 @@ public class Sword : MonoBehaviour {
 				transform.eulerAngles = attachPointangle;
 			}
 		}
+
 		//else Destroy(gameObject);
 
 	

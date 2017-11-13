@@ -24,15 +24,16 @@ public abstract class PlayerStatsController : Destrutiveis {
 	//public static PlayerStatsController instance;
 
 	public int xpMultiply = 1;
-	public float xpThisLevel = 100;
+	public int xpThisLevel = 100;
 	public float difficultFactor = 1.5f;	
 	public List<BasicInfoChar> baseInfoChars;
-
+	public static int currentLevel = 1;
+	public static int currentXp = 0;
 	// Use this for initialization
-	//public void Start () {
+	public void Start () {
 		//instance = this;
 		//DontDestroyOnLoad(gameObject);
-	//}
+	}
 	
 	// Update is called once per frame
 
@@ -46,11 +47,17 @@ public abstract class PlayerStatsController : Destrutiveis {
 		PlayerPrefs.SetFloat ("currentXP", newXP);
 	}
 */
-	public static float GetCurrentXP(){
-		return PlayerPrefs.GetFloat ("currentXp");
+	public static int GetCurrentXP(){
+		return currentXp;
 	}
 	public static int GetCurrentLevel(){
-		return PlayerPrefs.GetInt ("currentLevel");
+		return currentLevel;
+	}
+	public static void SetCurrentLevel(int i){
+		currentLevel = i;
+	}
+	public static void SetCurrentXp(int i){
+		currentXp = i;
 	}
 	/*public static float GetNextXP(){
 		return (
@@ -61,8 +68,7 @@ public abstract class PlayerStatsController : Destrutiveis {
 	}
 */
 	public static void AddLevel(){
-		int levelUp = GetCurrentLevel () + 1;
-		PlayerPrefs.SetInt ("currentLevel",levelUp);
+		currentLevel++;
 	}
 	public static TypeCharacter GetTypeCharacter(){
 		int id = PlayerPrefs.GetInt("TypeCharacter");

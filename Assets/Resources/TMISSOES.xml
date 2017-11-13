@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<missoes>
+	<missao>
+		<id>1</id>
+		<nome>Caça aos cogumelos</nome>
+		<pedidoID>21</pedidoID>
+		<quantidade>5</quantidade>
+		<xp>100</xp>
+		<recompensaID>2</recompensaID>
+		<tipo>coleta</tipo>
+	</missao>
+
+	<missao>
+		<id>2</id>
+		<nome>Garrafadas</nome>
+		<pedidoID>22</pedidoID>
+		<quantidade>7</quantidade>
+		<xp>100</xp>
+		<recompensaID>6</recompensaID>
+		<tipo>coleta</tipo>
+	</missao>
+
+</missoes>

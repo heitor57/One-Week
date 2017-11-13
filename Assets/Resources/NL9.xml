@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+	<dialogos>
+	<dialogo texto="Fala">
+		<dialogo texto="Diz a lenda que ao anoitecer,">
+			<dialogo texto="ainda se pode ver as almas dos cavaleiros">
+				<dialogo texto="marchando para a antiga passagem para o sul ">
+					<dialogo texto="durante a Guerra das Montanhas Cinzentas."></dialogo>
+				</dialogo>
+			</dialogo>
+		</dialogo>	
+	</dialogo>
+	</dialogos>

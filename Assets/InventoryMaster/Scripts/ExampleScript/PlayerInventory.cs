@@ -21,6 +21,7 @@ public class PlayerInventory : MonoBehaviour
     Text hpText;
     Text stmText;
 	Text xpText;
+	Text cLevel;
 	Image xpImage;
     Image hpImage;
     Image stmImage;
@@ -53,6 +54,10 @@ public class PlayerInventory : MonoBehaviour
 		Inventory.ItemEquip += EquipWeapon;
         Inventory.UnEquipItem += UnEquipWeapon;
     }
+
+	public Inventory principal(){
+		return mainInventory;
+	}
 
     public void OnDisable()
     {
@@ -123,9 +128,6 @@ public class PlayerInventory : MonoBehaviour
             }
         }
     }
-	public Inventory getMainInventory(){
-		return mainInventory;
-	}
     void UnEquipBackpack(Item item)
     {
         if (item.itemType == ItemType.Backpack)
@@ -201,6 +203,7 @@ public class PlayerInventory : MonoBehaviour
             hpText = HPCanvas.transform.GetChild(1).GetChild(0).GetComponent<Text>();
             stmText = HPCanvas.transform.GetChild(2).GetChild(0).GetComponent<Text>();
 			xpText = HPCanvas.transform.GetChild(3).GetChild(0).GetComponent<Text>();
+			cLevel = HPCanvas.transform.GetChild(5).GetComponent<Text>();
 
 			xpImage = HPCanvas.transform.GetChild(3).GetComponent<Image>();
             hpImage = HPCanvas.transform.GetChild(1).GetComponent<Image>();
@@ -246,9 +249,12 @@ public class PlayerInventory : MonoBehaviour
 	void UpdateXPBar()
 	{
 		currentXP=GetComponent<PlayerBehaviour>().currentXP;
+		maxXP=GetComponent<PlayerBehaviour>().xpThisLevel;
 		xpText.text = (currentXP + "/" + maxXP);
 		float fillAmount = currentXP / maxXP;
 		xpImage.fillAmount = fillAmount;
+		currentLevel=GetComponent<PlayerBehaviour>().currentLevel;
+		cLevel.text = ""+currentLevel;
 	}
 
     public void OnConsumeItem(Item item)

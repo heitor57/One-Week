@@ -13,7 +13,7 @@ public class NPC : MonoBehaviour {
 	public string b;
 	int i;
 	public bool podeInteragir=false;
-	bool primeira=true;
+	public bool primeira=false;
 	string tipo;
 	GUIStyle guiStyle = new GUIStyle();
 	bool conversa=false;
@@ -25,7 +25,6 @@ public class NPC : MonoBehaviour {
 	void Start () {
 		Dist = GameObject.Find ("Player").transform.position;
 		Dist = Dist - transform.position;
-
 	}
 	
 	// Update is called once per frame
@@ -49,14 +48,20 @@ public class NPC : MonoBehaviour {
 				} else if (opcaoConversa < 0) {
 					opcaoConversa = a.Length - 1;
 				}
-				if (Input.GetKeyDown (KeyCode.Return)) {
+				if (Input.GetKeyDown (KeyCode.Return)&& primeira==false) {
 
 					a = TesteParser.PegarNoSeguinte (opcaoConversa);
 					opcaoConversa = 0;
+					if (TesteParser.IDmissao () != null) {
+						GetComponent<Missoes> ().qual (TesteParser.IDmissao());
+					}
+
+	
 				}
 				if (a.Length == 0) {
 					podeInteragir = false;
-					primeira = true;
+					primeira = false;
+					conversa = false;
 				}
 			}
 		}
@@ -90,10 +95,11 @@ public class NPC : MonoBehaviour {
 			if (primeira) {
 				if (!Input.GetKey(KeyCode.Escape)) {
 					GUI.color = Color.red;
-					GUI.Label (new Rect (posiX, posiY, 1000, 100), a [0]);
+					GUI.Label (new Rect (posiX, posiY, 1000, 100), a[0]);
 				} else {
 					podeInteragir = false;
 					primeira = true;
+					conversa = false;
 				}
 			}
 			else if (!Input.GetKey (KeyCode.Escape)) {
@@ -110,6 +116,7 @@ public class NPC : MonoBehaviour {
 			}else {
 				podeInteragir = false;
 				primeira = true;
+				conversa = false;
 
 			}
 		}

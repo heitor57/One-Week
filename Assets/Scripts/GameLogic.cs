@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class GameLogic{
 
-	public static float ExperienceForNextLevel(int currentLevel)
+	public static int ExperienceForNextLevel(int currentLevel)
 	{
 		if (currentLevel == 0)
 			return 0;

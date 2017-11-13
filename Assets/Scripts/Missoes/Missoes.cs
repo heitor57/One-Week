@@ -30,13 +30,13 @@ public class Missoes : MonoBehaviour {
 	}
 
 	public void qual(string i){
-		Missao[] aux=XMLParser.Dialogo (xml.text);
-		foreach(Missao x in aux){
-			if (x.id.Equals(i)) {
-				missao = x;
-				criador ();
-			}
-		}
+	//	Missao[] aux=XMLParser.Dialogo (xml.text);
+	//	foreach(Missao x in aux){
+	//		if (x.id.Equals(i)) {
+	//			missao = x;
+	//			criador ();
+	//		}
+	//	}
 	}
 
 	public void criador(){

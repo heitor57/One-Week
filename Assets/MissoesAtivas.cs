@@ -10,15 +10,11 @@ public class MissoesAtivas : MonoBehaviour {
 		pb = GameObject.Find ("Player").GetComponent<PlayerBehaviour> ();
 	}	
 	// Update is called once per frame
-	void Update () {
-		//if (ma.activeSelf) {
-		GameObject.Find ("MissoesAtivas").GetComponent<Text> ().text = setTexto();		
-	}
-	private string setTexto(){
+	public void Seta () {
 		string mAtivas = " ";
 		foreach (Missoes q in pb.missoes) {
 			mAtivas += "\n" + q.getNome () + "\t" + q.cont + "/" + q.missao.quantidade;
 		}
-		return mAtivas;
+		GameObject.Find ("MissoesAtivas").GetComponent<Text> ().text = mAtivas;		
 	}
 }

@@ -19,7 +19,7 @@ public class NPC : MonoBehaviour {
 	bool conversa=false;
 
 
-
+	/*
 
 	// Use this for initialization
 	void Start () {
@@ -122,6 +122,6 @@ public class NPC : MonoBehaviour {
 		}
 
 
-	}
+	}*/
 }
 

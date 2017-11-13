@@ -16,5 +16,5 @@ public class MissoesAtivas : MonoBehaviour {
 			mAtivas += "\n" + q.getNome () + "\t" + q.cont + "/" + q.missao.quantidade;
 		}
 		GameObject.Find ("MissoesAtivas").GetComponent<Text> ().text = mAtivas;		
-	}
+	}	
 }

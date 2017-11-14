@@ -12,7 +12,9 @@ TrueTypeFontImporter:
   fontName: NEOTERIQUE
   fontNames:
   - NEOTERIQUE
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 67559b574df99b944b2bf7e3d34fe24c, type: 3}
+  - {fileID: 12800000, guid: f17428fa491c650478be415c1fca8404, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

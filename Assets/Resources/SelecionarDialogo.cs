@@ -2,22 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
 
-public class SelecionarDialogo {
+
+public class SelecionarDialogo  {
 	public static TextAsset selecionar(){
-		string[] aux = Directory.GetFiles (Application.dataPath, "*.xml");
-		for (int i = 0; i < aux.Length; i++) {
-			aux [i] = Path.GetFileName (aux [i]);
-		}
+		string[] fileArray = Directory.GetFiles("C:\\Users\\moyse\\Desktop\\Projeto Fase 1\\Assets\\Resources","*.xml");
 
-		int a = Random.Range (0, aux.Length);
-
-		TextAsset k = Resources.Load (aux [a]) as TextAsset;
-
-		return k;
+        System.Random rnd = new System.Random();
+        int i = rnd.Next(0, fileArray.Length);
+		Debug.Log (fileArray.Length);
+        TextAsset tex = (TextAsset)Resources.Load(fileArray[i].Split('\\')[fileArray[i].Split('\\').Length - 1].Split('.')[0]);
+        return tex;
 	}
 
 }

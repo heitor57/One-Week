@@ -193,6 +193,7 @@ public class PlayerInventory : MonoBehaviour
 
     void Start()
     {	
+		Cursor.visible = false;
 		currentLevel = GetComponent<PlayerBehaviour> ().currentLevel;
 		maxXP = GetComponent<PlayerBehaviour> ().xpThisLevel;
 		maxHealth = GetComponent<PlayerBehaviour> ().basicStats.GetLife ();
@@ -374,7 +375,7 @@ public class PlayerInventory : MonoBehaviour
             if (!characterSystem.activeSelf)
             {
                 characterSystemInventory.openInventory();
-				Screen.lockCursor=false;
+				Cursor.visible = true;
             }
             else
             {
@@ -389,7 +390,7 @@ public class PlayerInventory : MonoBehaviour
             if (!inventory.activeSelf)
             {
                 mainInventory.openInventory();
-				Screen.lockCursor=false;
+				Cursor.visible = true;
             }
             else
             {
@@ -412,8 +413,8 @@ public class PlayerInventory : MonoBehaviour
                 craftSystemInventory.closeInventory();
             }
         }
-		if ((!inventory.activeSelf) && (!characterSystem.activeSelf) && !(GameObject.Find ("Camera").GetComponent<MenuPause>().paro())) {
-			Screen.lockCursor = true;
+		if ((!inventory.activeSelf) && (!characterSystem.activeSelf) && (!GameObject.Find ("Player").GetComponent<MenuPause>().paro())) {
+			Cursor.visible = false;
 		}
     }
 

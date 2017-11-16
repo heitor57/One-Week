@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+	<dialogos>
+		<dialogo texto="missao">
+			<dialogo texto="Por favor, preciso que me ajude capitão.">
+				<dialogo texto="Qual o problema?">
+					<dialogo texto="Aqueles malditos vagabundos roubaram minhas mercadorias.">
+						<dialogo texto="Suas mercadorias?">
+							<dialogo texto="É! Minhas mercadorias, não posso ter mais prejuizos nesses tempos onde o maldito rei está subindo os impostos.">
+								<dialogo texto="Cuidado com a lingua.">
+									<dialogo texto="Onde o Magnus está com a cabeça crescendo a taxa de impostos.Pode me ajudar capitão?">
+										<dialogo texto="Não devia mas vou lhe ajudar." missao = "6"> </dialogo>
+										<dialogo texto="Não, pense melhor no que vai dizer">
+											<dialogo texto="para não acabar não somente sem sua mercadoria como sua cabeça."></dialogo>
+									</dialogo>	
+									</dialogo>
+								</dialogo>
+							</dialogo>
+						</dialogo>
+					</dialogo>
+				</dialogo>
+			</dialogo>
+		</dialogo>
+	</dialogos>

@@ -7,6 +7,8 @@ public class Sword : MonoBehaviour {
 	/*public Transform attachPoint1;
 	public Transform attachPoint2;*/
 	public Vector3 attachPointposi;
+	public AudioClip slash,hitWood;
+	AudioSource audioSource;
 	public Vector3 attachPointangle;
 	public GameObject owner;
 	public bool atacando=false;
@@ -16,6 +18,7 @@ public class Sword : MonoBehaviour {
 	// Arrumar o colisor depois adicionar os scripts de status e fazer o prefab
 	void Start()
 	{
+		audioSource = GetComponent<AudioSource>();
 		owner = transform.parent.gameObject;
 		perna();
 		dmg += GetComponentInParent<Destrutiveis>().GetDano();
@@ -71,6 +74,13 @@ public class Sword : MonoBehaviour {
 	void OnTriggerEnter(Collider col){
 
 		if (col.GetComponent<Destrutiveis>()!= null && atacando==true && col.gameObject!=owner.transform.gameObject ) {
+			if (col.gameObject.GetComponent<CharacterBase> ()) {
+				audioSource.PlayOneShot (slash, 0.4f);
+			} else {
+				if (col.gameObject.GetComponent<SimpleObjects> ()) {
+					audioSource.PlayOneShot (hitWood, 0.4f);
+				}
+			}
 			col.GetComponent<Destrutiveis>().perdeVida (dmg,GetComponentInParent<CharacterBase>());
 			if(col.GetComponent<AIRig> () != null){
 				RAIN.Memory.RAINMemory memory = col.GetComponent<AIRig> ().AI.WorkingMemory;

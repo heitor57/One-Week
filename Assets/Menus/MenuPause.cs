@@ -8,7 +8,7 @@ public class MenuPause : MonoBehaviour {
 	[SerializeField]  bool Pausado;
 	private PlayerInventory inventario;
 	private GameObject mc, HP;
-	private Camera pc, cam;
+	public Camera pc, cam;
 	//public GameObject inventory,characterSystem;
 
 	// Use this for initialization
@@ -17,8 +17,6 @@ public class MenuPause : MonoBehaviour {
 		inventario = GameObject.Find ("Player").GetComponent<PlayerInventory>();
 		//MonoBehaviour[] components;
 		Pausado=false;
-		//pc = GameObject.Find ("PC").GetComponent<Camera>();
-		//cam = GameObject.Find ("Camera").GetComponent<Camera>();
 		Time.timeScale=1;
 		mc = GameObject.Find ("Map Camera");
 		HP = GameObject.Find ("HPCanvas");
@@ -45,12 +43,12 @@ public class MenuPause : MonoBehaviour {
 	}
 	public void Pause(){		
 		Tela.SetActive(true);
-		//pc.enabled=true;
-		//cam.enabled=false;
+		pc.gameObject.SetActive(true);
+		cam.enabled=false;
 		//paraTudo (false);		
 		//Cursor.visible = true; -Moysés
 		//inventario.enabled=false;
-		Screen.lockCursor=false;
+		Cursor.visible=true;
 		Pausado=true;
 		mc.SetActive (false);
 		HP.SetActive (false);
@@ -61,11 +59,12 @@ public class MenuPause : MonoBehaviour {
 	public void Retomar(){
 		Tela.SetActive(false);
 		//pc.enabled = false;
-		//cam.enabled = true;
+		pc.gameObject.SetActive(false);
+		cam.enabled = true;
 		//paraTudo (true);
 		//Cursor.visible = false;  -Moysés
 		//inventario.enabled=true;
-		Screen.lockCursor = true;
+		Cursor.visible = false;
 		Pausado=false;
 		mc.SetActive (true);
 		HP.SetActive (true);

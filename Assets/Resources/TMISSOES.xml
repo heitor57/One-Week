@@ -20,4 +20,44 @@
 		<tipo>coleta</tipo>
 	</missao>
 
+	<missao>
+		<id>3</id>
+		<nome>Pedras da Lua</nome>
+		<pedidoID>24</pedidoID>
+		<quantidade>7</quantidade>
+		<xp>100</xp>
+		<recompensaID>6</recompensaID>
+		<tipo>coleta</tipo>
+	</missao>
+
+	<missao>
+		<id>4</id>
+		<nome>Elmo Real</nome>
+		<pedidoID>2</pedidoID>
+		<quantidade>1</quantidade>
+		<xp>100</xp>
+		<recompensaID>6</recompensaID>
+		<tipo>coleta</tipo>
+	</missao>
+
+	<missao>
+		<id>5</id>
+		<nome>Luz na Escuridão</nome>
+		<pedidoID>24</pedidoID>
+		<quantidade>8</quantidade>
+		<xp>100</xp>
+		<recompensaID>6</recompensaID>
+		<tipo>coleta</tipo>
+	</missao>
+
+
+	<missao>
+		<id>6</id>
+		<nome>Mercadorias de Valor</nome>
+		<pedidoID>26</pedidoID>
+		<quantidade>13</quantidade>
+		<xp>100</xp>
+		<recompensaID>6</recompensaID>
+		<tipo>coleta</tipo>
+	</missao>
 </missoes>

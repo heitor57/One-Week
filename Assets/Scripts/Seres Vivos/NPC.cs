@@ -17,14 +17,17 @@ public class NPC : MonoBehaviour {
 	string tipo;
 	GUIStyle guiStyle = new GUIStyle();
 	bool conversa=false;
+	//public GameObject caixa;
 
 
-	/*
+
 
 	// Use this for initialization
 	void Start () {
 		Dist = GameObject.Find ("Player").transform.position;
 		Dist = Dist - transform.position;
+		xml = SelecionarDialogo.selecionar ();
+
 	}
 	
 	// Update is called once per frame
@@ -33,6 +36,7 @@ public class NPC : MonoBehaviour {
 		Dist = Dist - transform.position;
 		if (podeInteragir) {
 			if (conversa) {
+				//caixa.SetActive (true);
 				if (primeira) {
 					TesteParser.Ler (xml.text);
 					a = TesteParser.PegarFilhos();
@@ -55,12 +59,10 @@ public class NPC : MonoBehaviour {
 					if (TesteParser.IDmissao () != null) {
 						GetComponent<Missoes> ().qual (TesteParser.IDmissao());
 					}
-
-	
 				}
 				if (a.Length == 0) {
 					podeInteragir = false;
-					primeira = false;
+					primeira = true;
 					conversa = false;
 				}
 			}
@@ -73,29 +75,37 @@ public class NPC : MonoBehaviour {
 			podeInteragir = true;
 		else
 			podeInteragir = false;
-			if(!podeInteragir)
-				conversa = false;
-			if (conversa == false && podeInteragir == true) {
-				//mensagem quando o usuario passar perto de um npc
-				guiStyle.fontSize=20;
+		if(!podeInteragir)
+			conversa = false;
+		//AboutAnimal aboutplayer=null;
+		//foreach(AboutAnimal animal in GetComponent<RAIN.Core.AIRig> ().AI.WorkingMemory.GetItem<List<AboutAnimal>>("aboutanimal")){
+		//	if (animal.Target == GameObject.Find ("Player")) {
+		//		aboutplayer = animal;
+		//	}
+	//	}
+		//if(aboutplayer.Target != null && (aboutplayer.isEnemy(GetComponent<SerVivo>()) || aboutplayer.isEnemyWeak(GetComponent<SerVivo>())))
+		//	podeInteragir = false;
+		if (conversa == false && podeInteragir == true) {
+			//mensagem quando o usuario passar perto de um npc
+			guiStyle.fontSize=20;
 			GUI.Label (new Rect (posiX, posiY+20, 1000, 100), "Interagir- ENTER",guiStyle);
-				//se o usuario apertar enter a conversa vai começar
+			//se o usuario apertar enter a conversa vai começar
 			if (Input.GetKeyDown (KeyCode.Return)) {
 				conversa = true;
 				primeira = true;
 			}
 				opcaoConversa = 0;
-				//if (Input.GetKeyDown (KeyCode.B)) {
-				//	CausarDano (gameObject.GetComponent<Destrutiveis> ().GetDano ());
-				//}
-			}
-		//GUI.Label (new Rect (posiX, posiY, 1000, 100), a[0]);
+			//if (Input.GetKeyDown (KeyCode.B)) {
+			//	CausarDano (gameObject.GetComponent<Destrutiveis> ().GetDano ());
+			//}
+		}
+	//GUI.Label (new Rect (posiX, posiY, 1000, 100), a[0]);
 		//GUI.color = Color.yellow;
 		if (conversa) {
 			if (primeira) {
 				if (!Input.GetKey(KeyCode.Escape)) {
 					GUI.color = Color.red;
-					GUI.Label (new Rect (posiX, posiY, 1000, 100), a[0]);
+					//GUI.Label (new Rect (posiX, posiY, 1000, 100), a[0]);
 				} else {
 					podeInteragir = false;
 					primeira = true;
@@ -122,6 +132,6 @@ public class NPC : MonoBehaviour {
 		}
 
 
-	}*/
+	}
 }
 

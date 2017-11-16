@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+	<dialogos>
+		<dialogo texto="missao">
+			<dialogo texto="Capitão, como vai?">
+				<dialogo texto="Muito bem, e você?">
+					<dialogo texto="Bem...bem... mas estou com um problema, os lampiões da cidade sumiram.">
+						<dialogo texto="Sumiram? Como assim?">
+							<dialogo texto="Todo o carregameto de lampiões da cidade sumiram, provavelmente foram roubados.">
+								<dialogo texto="O senhor como um agente do rei pode me ajudar a encontrá-los?">
+									
+										<dialogo texto="Sim, posso ajudá-lo sim." missao = "5"> </dialogo>
+										<dialogo texto="Uma pena, mas como disse,sou um agente do rei,">
+											<dialogo texto="e não tenho tempo para problemas como esse."></dialogo>
+										
+									</dialogo>
+								</dialogo>
+							</dialogo>
+						</dialogo>
+					</dialogo>
+				</dialogo>
+			</dialogo>
+		</dialogo>
+	</dialogos>

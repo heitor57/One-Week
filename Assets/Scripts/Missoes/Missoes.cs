@@ -15,7 +15,7 @@ public class Missoes : MonoBehaviour {
 	private PlayerInventory inventario;
 	private List<Item> itensNoInventario;
 	private bool feito;
-
+	private GameObject c;//Completou Missao
 	public Missao missao;
 	public TextAsset xml;
 	static ItemDataBaseList inventoryItemList;
@@ -24,19 +24,19 @@ public class Missoes : MonoBehaviour {
 	public void Start(){
 		cb = GameObject.Find ("Player").GetComponent<PlayerBehaviour> ();
 		inventario = GameObject.Find("Player").GetComponent<PlayerInventory>();
-
+		c=GameObject.Find("Congratulations");
 
 		inventoryItemList = (ItemDataBaseList)Resources.Load("ItemDatabase");
 	}
 
 	public void qual(string i){
-	//	Missao[] aux=XMLParser.Dialogo (xml.text);
-	//	foreach(Missao x in aux){
-	//		if (x.id.Equals(i)) {
-	//			missao = x;
-	//			criador ();
-	//		}
-	//	}
+		Missao[] aux=XMLParser.Dialogo (xml.text);
+		foreach(Missao x in aux){
+			if (x.id.Equals(i)) {
+				missao = x;
+				criador ();
+			}
+		}
 	}
 
 	public void criador(){
@@ -97,15 +97,18 @@ public class Missoes : MonoBehaviour {
 	public void Update () {
 		if(concluida==true && primeira==false){
 			cb.Aumentarxp (xp);
-			//GameObject c  =GameObject.Find("Congratulations");
-			//c.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = ("\n" + this.getNome () + "\t" + this.cont + "/" + this.missao.quantidade);
-			//string rew = (this.xp+" Pontos de Experiência");
+
+			c.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = ("\n" + this.getNome () + "\t" + this.cont + "/" + this.missao.quantidade);
+			string rew = (this.xp+" Pontos de Experiência");
 			if(recompensaID!=null){//da a recompensa				
 				inventario.principal().addItemToInventory(recompensaID);
-				//rew += (" e\n"+inventoryItemList.getItemByID (missao.recompensaID).itemName);
+				rew += (" e\n"+inventoryItemList.getItemByID (missao.recompensaID).itemName);
 			}
-			//c.transform.GetChild(0).GetChild(3).GetComponent<Text>().text = rew;
-			//c.SetActive (true);
+			c.transform.GetChild(0).GetChild(3).GetComponent<Text>().text = rew;
+			c.SetActive (true);
+			if (Input.GetKey (KeyCode.Return) || Input.GetKey (KeyCode.KeypadEnter)) {
+				c.SetActive (false);
+			}
 			primeira = true;
 		}
 		if(tipo=="coleta"){

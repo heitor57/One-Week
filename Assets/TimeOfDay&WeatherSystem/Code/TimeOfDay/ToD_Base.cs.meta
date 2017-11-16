@@ -1,10 +1,14 @@
 fileFormatVersion: 2
 guid: c7c40ab374823fe459d2f9a26c544e8b
-timeCreated: 1433672104
-licenseType: Store
+timeCreated: 1510851557
+licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - gWeatherMaster: {instanceID: 0}
+  - lSun: {instanceID: 0}
+  - lMoon: {instanceID: 0}
+  - Dias: {fileID: 1446475606543198, guid: 27136d19aad055a44bf8f57f0ea16ed8, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

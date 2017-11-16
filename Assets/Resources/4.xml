@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+	<dialogos>
+		<dialogo texto="missao">
+			<dialogo texto="Senhor Orion, preciso de um favor.">
+				<dialogo texto="Pode dizer meu caro.">
+					<dialogo texto="Os soldados do rei ordenaram a entrega de um elmo para os capitães.">
+						<dialogo texto="Fiquei sabendo, mas não me fora entregue nada.">
+							<dialogo texto="Por isso, os malditos bandoleiros atacaram durante o transporte e os elmos foram perdidos próximos a Viridis.">
+								<dialogo texto="Aquela é uma área perigosa, pode tentar recuperá-los?">
+									
+										<dialogo texto="Claro, posso tentar recuperá-los." missao = "4"> </dialogo>
+										<dialogo texto="Diga aos soldados que lamento,">
+											<dialogo texto="mas não posso ajudar nisso."></dialogo>
+										
+									</dialogo>
+								</dialogo>
+							</dialogo>
+						</dialogo>
+					</dialogo>
+				</dialogo>
+			</dialogo>
+		</dialogo>
+	</dialogos>

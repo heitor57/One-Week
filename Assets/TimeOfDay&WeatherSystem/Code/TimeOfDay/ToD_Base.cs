@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 /// <summary>
@@ -222,6 +223,10 @@ public class ToD_Base : MonoBehaviour
         set { _iNightStart = value; }
     }
 
+
+	public GameObject Dias;
+
+
     /// <summary>
     /// Unity function - See Unity documentation
     /// </summary>
@@ -238,6 +243,9 @@ public class ToD_Base : MonoBehaviour
         _iAmountOfDaysPlayed = 0;
         _fCurrentHour = 0.0f;
         _fCurrentMinute = 0.0f;
+
+		Dias = GameObject.Find ("Dias");
+		Dias.SetActive (false);
     }
 
     /// <summary>
@@ -260,6 +268,45 @@ public class ToD_Base : MonoBehaviour
         {
             _fCurrentTimeOfDay = 0.0f;
             _iAmountOfDaysPlayed += 1;
+
+			Dias.transform.GetChild (0).GetChild (1).GetComponent<Text> ().text = (_iAmountOfDaysPlayed)+"";
+			switch (_iAmountOfDaysPlayed) {
+			case 1:
+				{
+					Dias.transform.GetChild (0).GetChild (2).GetComponent<Text> ().text = "Investigar os acampamentos de Bandidos ao Leste";
+				}
+				break;
+			case 2:
+				{
+					Dias.transform.GetChild (0).GetChild (2).GetComponent<Text> ().text = "Visitar o capitão do Leste em Viridis";
+				}
+				break;
+			case 3:
+				{
+					Dias.transform.GetChild (0).GetChild (2).GetComponent<Text> ().text = "Caçar Tigres com Sir. Basílio no Bosque de Boreas";
+				}
+				break;
+			case 4:
+				{
+					Dias.transform.GetChild (0).GetChild (2).GetComponent<Text> ().text = "O Machado de Sir. Stihler foi perdido. Recuperar-lo. ";
+				}
+				break;
+			case 5:
+				{
+					Dias.transform.GetChild (0).GetChild (2).GetComponent<Text> ().text = "Conseguir recursos com o Conselheiro Gãbíah Ra Novaes";
+				}
+				break;
+			case 6:
+				{
+					Dias.transform.GetChild (0).GetChild (2).GetComponent<Text> ().text = "O Golpe é hoje. Ir até Verus.";
+				}
+				break;
+			}
+			Time.timeScale = 0;
+			Dias.SetActive (true);
+			StartCoroutine (wait());
+			Dias.SetActive (false);
+			Time.timeScale = 1;
 
             if (_bUseWeather == true)
                 gWeatherMaster.GetComponent<Weather_Controller>().GetSet_iAmountOfDaysSinceLastWeather += 1;
@@ -296,6 +343,8 @@ public class ToD_Base : MonoBehaviour
     {
         enCurrTimeset = currentTime;
     }
-
+	IEnumerator wait(){
+		yield return new WaitForSecondsRealtime (5);
+	}
 }
 

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 public class NPC : MonoBehaviour {
 	public TextAsset xml;
 	MUsuario AuxMissao;
@@ -36,6 +36,10 @@ public class NPC : MonoBehaviour {
 		Dist = Dist - transform.position;
 		if (podeInteragir) {
 			if (conversa) {
+				GetComponent<NavMeshAgent>().isStopped = true;
+				transform.LookAt (GameObject.Find ("Player").transform);
+				GetComponent<Animator> ().Play("Idle");
+
 				//caixa.SetActive (true);
 				if (primeira) {
 					TesteParser.Ler (xml.text);
@@ -66,6 +70,9 @@ public class NPC : MonoBehaviour {
 					conversa = false;
 				}
 			}
+		}else{
+			GetComponent<NavMeshAgent>().isStopped = false;
+			GetComponent<Animator> ().Play("Walk");
 		}
 	}
 	void OnGUI(){

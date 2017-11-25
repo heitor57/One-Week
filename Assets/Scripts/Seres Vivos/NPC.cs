@@ -36,14 +36,12 @@ public class NPC : MonoBehaviour {
 		Dist = Dist - transform.position;
 		if (podeInteragir) {
 			if (conversa) {
-				GetComponent<NavMeshAgent>().isStopped = true;
-				transform.LookAt (GameObject.Find ("Player").transform);
-				GetComponent<Animator> ().Play("Idle");
+				IAIntegration.TalkNPC (GameObject.Find ("Player"), gameObject, true);
 
 				//caixa.SetActive (true);
 				if (primeira) {
 					TesteParser.Ler (xml.text);
-					a = TesteParser.PegarFilhos();
+					a = TesteParser.PegarFilhos ();
 					if (Input.GetKeyDown (KeyCode.Return))
 						primeira = false;
 				}
@@ -56,12 +54,12 @@ public class NPC : MonoBehaviour {
 				} else if (opcaoConversa < 0) {
 					opcaoConversa = a.Length - 1;
 				}
-				if (Input.GetKeyDown (KeyCode.Return)&& primeira==false) {
+				if (Input.GetKeyDown (KeyCode.Return) && primeira == false) {
 
 					a = TesteParser.PegarNoSeguinte (opcaoConversa);
 					opcaoConversa = 0;
 					if (TesteParser.IDmissao () != null) {
-						GetComponent<Missoes> ().qual (TesteParser.IDmissao());
+						GetComponent<Missoes> ().qual (TesteParser.IDmissao ());
 					}
 				}
 				if (a.Length == 0) {
@@ -70,9 +68,8 @@ public class NPC : MonoBehaviour {
 					conversa = false;
 				}
 			}
-		}else{
-			GetComponent<NavMeshAgent>().isStopped = false;
-			GetComponent<Animator> ().Play("Walk");
+		} else {
+			IAIntegration.TalkNPC(GameObject.Find("Player"),gameObject,false);
 		}
 	}
 	void OnGUI(){

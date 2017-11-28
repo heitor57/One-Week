@@ -23,7 +23,7 @@ public abstract class PlayerStatsController : Destrutiveis {
 
 	//public static PlayerStatsController instance;
 
-	public int xpMultiply = 1;
+	public float xpMultiply = 1;
 	public int xpThisLevel = 100;
 	public float difficultFactor = 1.5f;	
 	public List<BasicInfoChar> baseInfoChars;
@@ -70,6 +70,7 @@ public abstract class PlayerStatsController : Destrutiveis {
 	public static void AddLevel(){
 		currentLevel++;
 	}
+	/*
 	public static TypeCharacter GetTypeCharacter(){
 		int id = PlayerPrefs.GetInt("TypeCharacter");
 		if (id == 0) {
@@ -100,7 +101,7 @@ public abstract class PlayerStatsController : Destrutiveis {
 		}
 		return baseInfoChars[0].baseInfo;
 	}
-	/*void OnGUI(){
+	void OnGUI(){
 		GUI.Label (new Rect (0, 0, 200, 50), "XP Atual = " + GetCurrentXP ());
 		GUI.Label (new Rect (0, 15, 200, 50), "Level Atual = " + GetCurrentLevel ());
 		//GUI.Label (new Rect (0, 30, 200, 50), "Level Up em = " + GetNextXP ());

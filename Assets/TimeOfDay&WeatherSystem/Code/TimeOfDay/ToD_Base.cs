@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-
+using UnityEngine.SceneManagement;
 /// <summary>
 /// Base: Time of Day
 /// </summary>
@@ -13,338 +13,400 @@ using System.Collections;
 /// <remarks>
 /// This is the main script for our Time of Day system. This handles the time and the updating of the sun. 
 /// </remarks>
-public class ToD_Base : MonoBehaviour 
+public class ToD_Base : MonoBehaviour
 {
-    /********** ----- VARIABLES ----- **********/
+	/********** ----- VARIABLES ----- **********/
 
-    /// <summary>
-    /// Does the user want to use a moon? 
-    /// </summary>
-    [SerializeField]
-    private bool _bUseMoon = true;
+	/// <summary>
+	/// Does the user want to use a moon? 
+	/// </summary>
+	[SerializeField]
+	private bool _bUseMoon = true;
+	string a;
 
-    /// <summary>
-    /// This is used to check if the user want to use weather effects or only the time of day
-    /// *Use \link GetSet_bUseWeather \endlink if you want to change it during runtime.
-    /// </summary>
-    [SerializeField]
-    private bool _bUseWeather = true;
+	/// <summary>
+	/// This is used to check if the user want to use weather effects or only the time of day
+	/// *Use \link GetSet_bUseWeather \endlink if you want to change it during runtime.
+	/// </summary>
+	[SerializeField]
+	private bool _bUseWeather = true;
 
-    /// <summary>
-    /// This is where the user sets how long a full 24 hour day should be in seconds.
-    /// *Use \link GetSet_bUseWeather \endlink if you want to change it during runtime.
-    /// </summary>
-    [SerializeField]
-    private float _fSecondInAFullDay = 60.0f;
+	/// <summary>
+	/// This is where the user sets how long a full 24 hour day should be in seconds.
+	/// *Use \link GetSet_bUseWeather \endlink if you want to change it during runtime.
+	/// </summary>
+	[SerializeField]
+	private float _fSecondInAFullDay = 60.0f;
 
-    /// <summary>
-    /// With this it is possible to change the speed for the time of day system. *This is only used for debuggning at the moment.\n
-    /// *Use \link GetSet_fTimeMultiplier \endlink if you want to access or change this from another script.
-    /// </summary>
-    [SerializeField]
-    private float _fTimeMultiplier = 1.0f;
+	/// <summary>
+	/// With this it is possible to change the speed for the time of day system. *This is only used for debuggning at the moment.\n
+	/// *Use \link GetSet_fTimeMultiplier \endlink if you want to access or change this from another script.
+	/// </summary>
+	[SerializeField]
+	private float _fTimeMultiplier = 1.0f;
 
-    /// <summary>
-    /// A day in the game goes from 0 to 1.\n
-    /// *Use \link Get_fCurrentTimeOfDay \endlink if you want to see the current value of this.
-    /// </summary>
-    [SerializeField, Range(0, 1)]
-    private float _fCurrentTimeOfDay;
+	/// <summary>
+	/// A day in the game goes from 0 to 1.\n
+	/// *Use \link Get_fCurrentTimeOfDay \endlink if you want to see the current value of this.
+	/// </summary>
+	[SerializeField, Range (0, 1)]
+	private float _fCurrentTimeOfDay;
 
-    /// <summary>
-    /// We use this CONST to re-count \link _fCurrentTimeOfDay \endlink to hours so it's easier for designer to set when they want the game and such in hours instead of in %. 
-    /// </summary>
-    private const float ONEHOURLENGTH = 1.0f / 24.0f;
+	/// <summary>
+	/// We use this CONST to re-count \link _fCurrentTimeOfDay \endlink to hours so it's easier for designer to set when they want the game and such in hours instead of in %. 
+	/// </summary>
+	private const float ONEHOURLENGTH = 1.0f / 24.0f;
 
-    /// <summary>
-    /// This is the INT we use so the designer can set the games starting time in hours from the editor\n
-    /// *Use \link GetSet_iStartHour \endlink if you want to access or change this from another script.\n
-    /// **This is only called once in the Start() so the game knows which time it should start at.
-    /// </summary>
-    [SerializeField]
-    private int _iStartHour;
+	/// <summary>
+	/// This is the INT we use so the designer can set the games starting time in hours from the editor\n
+	/// *Use \link GetSet_iStartHour \endlink if you want to access or change this from another script.\n
+	/// **This is only called once in the Start() so the game knows which time it should start at.
+	/// </summary>
+	[SerializeField]
+	private int _iStartHour;
 
-    private float _fStartingHour;
+	private float _fStartingHour;
 
-    /// <summary>
-    /// This is the INT we use so the designer can set at which hour they want SUNRISE to start\n
-    /// *Use \link GetSet_iSunriseStart \endlink if you want to access or change this from another script or during runtime.
-    /// </summary>
-    [SerializeField]
-    private int _iSunriseStart;
+	/// <summary>
+	/// This is the INT we use so the designer can set at which hour they want SUNRISE to start\n
+	/// *Use \link GetSet_iSunriseStart \endlink if you want to access or change this from another script or during runtime.
+	/// </summary>
+	[SerializeField]
+	private int _iSunriseStart;
 
-    /// <summary>
-    /// This is the INT we use so the designer can set at which hour they want DAY to start\n
-    /// *Use \link GetSet_iDayStart \endlink if you want to access or change this from another script or during runtime.
-    /// </summary>
-    [SerializeField]
-    private int _iDayStart;
+	/// <summary>
+	/// This is the INT we use so the designer can set at which hour they want DAY to start\n
+	/// *Use \link GetSet_iDayStart \endlink if you want to access or change this from another script or during runtime.
+	/// </summary>
+	[SerializeField]
+	private int _iDayStart;
 
-    /// <summary>
-    /// This is the INT we use so the designer can set at which hour they want SUNSET to start\n
-    /// *Use \link GetSet_iSunsetStart \endlink if you want to access or change this from another script or during runtime.
-    /// </summary>
-    [SerializeField]
-    private int _iSunsetStart;
+	/// <summary>
+	/// This is the INT we use so the designer can set at which hour they want SUNSET to start\n
+	/// *Use \link GetSet_iSunsetStart \endlink if you want to access or change this from another script or during runtime.
+	/// </summary>
+	[SerializeField]
+	private int _iSunsetStart;
 
-    /// <summary>
-    /// This is the INT we use so the designer can set at which hour they want NIGHT to start\n
-    /// *Use \link GetSet_iNightStart \endlink if you want to access or change this from another script or during runtime.
-    /// </summary>
-    [SerializeField]
-    private int _iNightStart;
+	/// <summary>
+	/// This is the INT we use so the designer can set at which hour they want NIGHT to start\n
+	/// *Use \link GetSet_iNightStart \endlink if you want to access or change this from another script or during runtime.
+	/// </summary>
+	[SerializeField]
+	private int _iNightStart;
 
-    /// <summary>
-    /// We use this varible to re-count the choosen hour into %
-    /// </summary>
-    private float _fStartingSunrise;
+	/// <summary>
+	/// We use this varible to re-count the choosen hour into %
+	/// </summary>
+	private float _fStartingSunrise;
 
-    /// <summary>
-    /// We use this varible to re-count the choosen hour into %
-    /// </summary>
-    private float _fStartingDay;
+	/// <summary>
+	/// We use this varible to re-count the choosen hour into %
+	/// </summary>
+	private float _fStartingDay;
 
-    /// <summary>
-    /// We use this varible to re-count the choosen hour into %
-    /// </summary>
-    private float _fStartingSunset;
+	/// <summary>
+	/// We use this varible to re-count the choosen hour into %
+	/// </summary>
+	private float _fStartingSunset;
 
-    /// <summary>
-    /// We use this varible to re-count the choosen hour into %
-    /// </summary>
-    private float _fStartingNight;
+	/// <summary>
+	/// We use this varible to re-count the choosen hour into %
+	/// </summary>
+	private float _fStartingNight;
 
-    /// <summary>
-    /// I re-count \link Get_fCurrentTimeOfDay \endlink to hours and have \link Get_fCurrentHour \endlink to show it for when we debug the time of day. 
-    /// </summary>
-    private float _fCurrentHour;
+	/// <summary>
+	/// I re-count \link Get_fCurrentTimeOfDay \endlink to hours and have \link Get_fCurrentHour \endlink to show it for when we debug the time of day. 
+	/// </summary>
+	private float _fCurrentHour;
 
-    /// <summary>
-    /// I re-count \link Get_fCurrentTimeOfDay \endlink to minutes and have \link _fCurrentMinute \endlink to show it for when we debug the time of day. 
-    /// </summary>
-    private float _fCurrentMinute;
+	/// <summary>
+	/// I re-count \link Get_fCurrentTimeOfDay \endlink to minutes and have \link _fCurrentMinute \endlink to show it for when we debug the time of day. 
+	/// </summary>
+	private float _fCurrentMinute;
 
-    /// <summary>
-    /// This is an INT we use to count how many game days the game has been played since the start.\n
-    /// *This is at the moment set to 0 in Start(). If you want to save this for future reference this need to be moved as it will be re-set everytime the game starts otherwise.\n
-    /// *Use \link Get_iAmountOfDaysPlayed \endlink if you want to see the current value of this.
-    /// </summary>
-    private int _iAmountOfDaysPlayed;
+	/// <summary>
+	/// This is an INT we use to count how many game days the game has been played since the start.\n
+	/// *This is at the moment set to 0 in Start(). If you want to save this for future reference this need to be moved as it will be re-set everytime the game starts otherwise.\n
+	/// *Use \link Get_iAmountOfDaysPlayed \endlink if you want to see the current value of this.
+	/// </summary>
+	private int _iAmountOfDaysPlayed;
 
-    /// <summary>
-    /// Weather master is needed so the time of day can update days as this controls when the weather should change. 
-    /// </summary>
-    public GameObject gWeatherMaster;
+	/// <summary>
+	/// Weather master is needed so the time of day can update days as this controls when the weather should change. 
+	/// </summary>
+	public GameObject gWeatherMaster;
 
-    /// <summary>
-    /// This needs to be a directional light so we have a light that covers the whole world. 
-    /// </summary>
-    public Light lSun;
+	/// <summary>
+	/// This needs to be a directional light so we have a light that covers the whole world. 
+	/// </summary>
+	public Light lSun;
 
-    /// <summary>
-    /// This needs to be a directional light so we have a light that covers the whole world. 
-    /// </summary>
-    public Light lMoon;
+	/// <summary>
+	/// This needs to be a directional light so we have a light that covers the whole world. 
+	/// </summary>
+	public Light lMoon;
 
-    /// <summary>
-    /// We use this to control Sunrise, Day, Sunset and Night
-    /// </summary>
-    public enum Timeset
-    {
-        SUNRISE, 
-        DAY,
-        SUNSET,
-        NIGHT
-    };
+	/// <summary>
+	/// We use this to control Sunrise, Day, Sunset and Night
+	/// </summary>
+	public enum Timeset
+	{
+		SUNRISE,
+		DAY,
+		SUNSET,
+		NIGHT}
 
-    [HideInInspector]
-    public Timeset enCurrTimeset;
+	;
 
-    /********** ----- GETTERS AND SETTERS ----- **********/
+	[HideInInspector]
+	public Timeset enCurrTimeset;
 
-    public float Get_fCurrentTimeOfDay { get { return _fCurrentTimeOfDay; } }
-    public float Get_fCurrentHour { get { return _fCurrentHour; } }
-    public float Get_fCurrentMinute { get { return _fCurrentMinute; } }
-    public int Get_iAmountOfDaysPlayed { get { return _iAmountOfDaysPlayed; } }
+	/********** ----- GETTERS AND SETTERS ----- **********/
 
-    public bool GetSet_bUseMoon
-    {
-        get { return _bUseMoon; }
-        set { _bUseMoon = value; }
-    }
+	public float Get_fCurrentTimeOfDay { get { return _fCurrentTimeOfDay; } }
 
-    public bool GetSet_bUseWeather
-    {
-        get { return _bUseWeather; }
-        set { _bUseWeather = value; }
-    }
+	public float Get_fCurrentHour { get { return _fCurrentHour; } }
 
-    public float GetSet_fSecondInAFullDay
-    {
-        get { return _fSecondInAFullDay; }
-        set { _fSecondInAFullDay = value; }
-    }
+	public float Get_fCurrentMinute { get { return _fCurrentMinute; } }
 
-    public float GetSet_fTimeMultiplier
-    {
-        get { return _fTimeMultiplier; }
-        set { _fTimeMultiplier = value; }
-    }
+	public int Get_iAmountOfDaysPlayed { get { return _iAmountOfDaysPlayed; } }
 
-    public int GetSet_iStartHour
-    {
-        get { return _iStartHour; }
-        set { _iStartHour = value; }
-    }
+	public bool GetSet_bUseMoon {
+		get { return _bUseMoon; }
+		set { _bUseMoon = value; }
+	}
 
-    public int GetSet_iSunriseStart
-    {
-        get { return _iSunriseStart; }
-        set { _iSunriseStart = value; }
-    }
+	public bool GetSet_bUseWeather {
+		get { return _bUseWeather; }
+		set { _bUseWeather = value; }
+	}
 
-    public int GetSet_iDayStart
-    {
-        get { return _iDayStart; }
-        set { _iDayStart = value; }
-    }
+	public float GetSet_fSecondInAFullDay {
+		get { return _fSecondInAFullDay; }
+		set { _fSecondInAFullDay = value; }
+	}
+
+	public float GetSet_fTimeMultiplier {
+		get { return _fTimeMultiplier; }
+		set { _fTimeMultiplier = value; }
+	}
+
+	public int GetSet_iStartHour {
+		get { return _iStartHour; }
+		set { _iStartHour = value; }
+	}
+
+	public int GetSet_iSunriseStart {
+		get { return _iSunriseStart; }
+		set { _iSunriseStart = value; }
+	}
+
+	public int GetSet_iDayStart {
+		get { return _iDayStart; }
+		set { _iDayStart = value; }
+	}
 
 
-    public int GetSet_iSunsetStart
-    {
-        get { return _iSunsetStart; }
-        set { _iSunsetStart = value; }
-    }
+	public int GetSet_iSunsetStart {
+		get { return _iSunsetStart; }
+		set { _iSunsetStart = value; }
+	}
 
 
-    public int GetSet_iNightStart
-    {
-        get { return _iNightStart; }
-        set { _iNightStart = value; }
-    }
+	public int GetSet_iNightStart {
+		get { return _iNightStart; }
+		set { _iNightStart = value; }
+	}
 
 
 	public GameObject Dias;
+	private string myText;
+	private AudioSource audio;
+	private bool foi=false,acabou=false;
+	private GameObject loadingScreen;
+	private Image loadingBar;
 
+	/// <summary>
+	/// Unity function - See Unity documentation
+	/// </summary>
+	void Start ()
+	{
+		_fStartingHour = ONEHOURLENGTH * (float)_iStartHour;
+		_fCurrentTimeOfDay = _fStartingHour;
 
-    /// <summary>
-    /// Unity function - See Unity documentation
-    /// </summary>
-    void Start()
-    {
-        _fStartingHour = ONEHOURLENGTH * (float)_iStartHour;
-        _fCurrentTimeOfDay = _fStartingHour;
+		_fStartingSunrise = ONEHOURLENGTH * (float)_iSunriseStart;
+		_fStartingDay = ONEHOURLENGTH * (float)_iDayStart;
+		_fStartingSunset = ONEHOURLENGTH * (float)_iSunsetStart;
+		_fStartingNight = ONEHOURLENGTH * (float)_iNightStart;
 
-        _fStartingSunrise = ONEHOURLENGTH * (float)_iSunriseStart;
-        _fStartingDay = ONEHOURLENGTH * (float)_iDayStart;
-        _fStartingSunset = ONEHOURLENGTH * (float)_iSunsetStart;
-        _fStartingNight = ONEHOURLENGTH * (float)_iNightStart;
-
-        _iAmountOfDaysPlayed = 0;
-        _fCurrentHour = 0.0f;
-        _fCurrentMinute = 0.0f;
+		_iAmountOfDaysPlayed = 0;
+		_fCurrentHour = 0.0f;
+		_fCurrentMinute = 0.0f;
 
 		Dias = GameObject.Find ("Dias");
-		Dias.SetActive (false);
-    }
+		audio = Dias.transform.GetChild (1).GetComponent<AudioSource> ();
 
-    /// <summary>
-    /// Unity function - See Unity documentation
-    /// </summary>
-    void Update()
-    {
-        UpdateSunAndMoon();
-        UpdateTimeset();
+		loadingScreen = GameObject.Find ("loadingScreen");
+		loadingBar = loadingScreen.transform.GetChild (0).GetComponent<Image>();
+		loadingScreen.GetComponent<Canvas>().enabled=false;
+//		if (Dias != null)
+//			Debug.Log ("Dias:" + Dias.transform.GetChild(0).childCount);
+//		else
+//			Debug.Log ("null");
+		//Dias.GetComponent<Canvas>().enabled = false;
+		//Dias.SetActive (false);
+	}
+	//		void Awake(){
+	//			Dias = GameObject.Find ("Dias");
+	//			if (Dias != null)
+	//				Debug.Log ("Dias:" + Dias.name);
+	//			else
+	//				Debug.Log ("null");
+	//			Dias.SetActive (false);
+	//		}
+	/// <summary>
+	/// Unity function - See Unity documentation
+	/// </summary>
+	void Update ()
+	{
+		UpdateSunAndMoon ();
+		UpdateTimeset ();
 
-        // Controls the speed of our "clock"
-        _fCurrentTimeOfDay += (Time.deltaTime / _fSecondInAFullDay) * _fTimeMultiplier;
+		if (_iAmountOfDaysPlayed==0 && !foi) {
+			Time.timeScale = 0;
+			StartCoroutine(type ("O quê?\n\tEu voltei no tempo!\n\tAquele caveleiro vermelho...\n\tPreciso encontra-lo...\n\te quando-o encontrar, eu o matarei!"));
+			foi = true;
+		}
+		if(Dias.GetComponent<Canvas> ().enabled && acabou){
+			if (Input.GetKeyDown (KeyCode.Return) || Input.GetKeyDown (KeyCode.KeypadEnter)) {
+				if (_iAmountOfDaysPlayed != 0) {
+					GameObject.Find (a).GetComponent<Marcacao> ().Destroi ();
 
-        // Digital time
-        _fCurrentHour = 24 * _fCurrentTimeOfDay;
-        _fCurrentMinute = 60 * (_fCurrentHour - Mathf.Floor(_fCurrentHour));
+				}
+				a=Puxa.teste ();
+				Dias.GetComponent<Canvas> ().enabled = false;
+				Time.timeScale = 1;
+				acabou = true;
+			}
+		}
 
-        // resets our time of day to 0 + adds a day to our amount of days played
-        if (_fCurrentTimeOfDay >= 1.0f)
-        {
-            _fCurrentTimeOfDay = 0.0f;
-            _iAmountOfDaysPlayed += 1;
+		// Controls the speed of our "clock"
+		_fCurrentTimeOfDay += (Time.deltaTime / _fSecondInAFullDay) * _fTimeMultiplier;
 
-			Dias.transform.GetChild (0).GetChild (1).GetComponent<Text> ().text = (_iAmountOfDaysPlayed)+"";
+		// Digital time
+		_fCurrentHour = 24 * _fCurrentTimeOfDay;
+		_fCurrentMinute = 60 * (_fCurrentHour - Mathf.Floor (_fCurrentHour));
+
+		// resets our time of day to 0 + adds a day to our amount of days played
+		if (_fCurrentTimeOfDay >= 1.0f) {
+			_fCurrentTimeOfDay = 0.0f;
+			_iAmountOfDaysPlayed += 1;
+
+			Dias.transform.GetChild (0).GetChild (1).GetComponent<Text> ().text = (_iAmountOfDaysPlayed).ToString ();
+			Dias.GetComponent<Canvas> ().enabled = true;
+			Time.timeScale = 0;
 			switch (_iAmountOfDaysPlayed) {
 			case 1:
 				{
-					Dias.transform.GetChild (0).GetChild (2).GetComponent<Text> ().text = "Investigar os acampamentos de Bandidos ao Leste";
+					StartCoroutine(type ( "Foi encontrado dois acampamentos de Bandidos ao Leste\n\tPreciso investigá-los"));
+
 				}
 				break;
 			case 2:
 				{
-					Dias.transform.GetChild (0).GetChild (2).GetComponent<Text> ().text = "Visitar o capitão do Leste em Viridis";
+					StartCoroutine(type ("Marquei de encontrar com o capitão do Leste.\n\tTalvez ele tenha informações..."));
 				}
 				break;
 			case 3:
 				{
-					Dias.transform.GetChild (0).GetChild (2).GetComponent<Text> ().text = "Caçar Tigres com Sir. Basílio no Bosque de Boreas";
+					StartCoroutine(type ("Sir. Basílio me chamou para caçar tigres no Bosque de Boreas\n\tVaiser um bom treinamento"));
 				}
 				break;
 			case 4:
 				{
-					Dias.transform.GetChild (0).GetChild (2).GetComponent<Text> ().text = "O Machado de Sir. Stihler foi perdido. Recuperar-lo. ";
+					StartCoroutine(type ("O Machado de Sir. Stihler foi perdido.\n\tPreciso recupera-lo!"));
 				}
 				break;
 			case 5:
 				{
-					Dias.transform.GetChild (0).GetChild (2).GetComponent<Text> ().text = "Conseguir recursos com o Conselheiro Gãbíah Ra Novaes";
+					StartCoroutine(type ("O Conselheiro Gãbíah Ra Novaes pode me ajudar...\n\tSegundo seus rápidos estudos,\n\tuma região parece favorável para conseguirmos recursos...\n\tVou precisar, o golpe é amanhã."));
 				}
 				break;
 			case 6:
 				{
-					Dias.transform.GetChild (0).GetChild (2).GetComponent<Text> ().text = "O Golpe é hoje. Ir até Verus.";
+					StartCoroutine(type ( "O Golpe é hoje.\n\tPreciso chegar em Verus."));
 				}
 				break;
-			}
-			Time.timeScale = 0;
-			Dias.SetActive (true);
-			StartCoroutine (wait());
-			Dias.SetActive (false);
-			Time.timeScale = 1;
+			case 7:
+				{
+					StartCoroutine (LoadAsynchronously (2));
+				}
+				break;
+			}  
 
-            if (_bUseWeather == true)
-                gWeatherMaster.GetComponent<Weather_Controller>().GetSet_iAmountOfDaysSinceLastWeather += 1;
-        }
-    }
-
-    /// <summary>
-    /// This is used inside Unitys Update() to update our SUN and MOON (if you have the MOON turned on). 
-    /// </summary>
-    void UpdateSunAndMoon()
-    {
-        // This rotates the sun 360 degree in X-axis according to our current time of day.
-        lSun.transform.localRotation = Quaternion.Euler((_fCurrentTimeOfDay * 360) - 90, 170, 0);
-
-        if (_bUseMoon == true)
-            lMoon.transform.localRotation = Quaternion.Euler((_fCurrentTimeOfDay * 360) - 270, 170, 0);
-    }
-
-
-
-    void UpdateTimeset()
-    {
-        if (_fCurrentTimeOfDay >= _fStartingSunrise && _fCurrentTimeOfDay <= _fStartingDay && enCurrTimeset != Timeset.SUNRISE)
-            SetCurrentTimeset(Timeset.SUNRISE);
-        else if (_fCurrentTimeOfDay >= _fStartingDay && _fCurrentTimeOfDay <= _fStartingSunset && enCurrTimeset != Timeset.DAY)
-            SetCurrentTimeset(Timeset.DAY);
-        else if (_fCurrentTimeOfDay >= _fStartingSunset && _fCurrentTimeOfDay <= _fStartingNight && enCurrTimeset != Timeset.SUNSET)
-            SetCurrentTimeset(Timeset.SUNSET);
-        else if (_fCurrentTimeOfDay >= _fStartingNight || _fCurrentTimeOfDay <= _fStartingSunrise && enCurrTimeset != Timeset.NIGHT)
-            SetCurrentTimeset(Timeset.NIGHT);
-    }
-
-    void SetCurrentTimeset(Timeset currentTime)
-    {
-        enCurrTimeset = currentTime;
-    }
-	IEnumerator wait(){
-		yield return new WaitForSecondsRealtime (5);
+			if (_bUseWeather == true)
+				gWeatherMaster.GetComponent<Weather_Controller> ().GetSet_iAmountOfDaysSinceLastWeather += 1;
+		}
 	}
+	IEnumerator type(string myText){
+		Dias.transform.GetChild(0).GetChild(0).GetComponent<Text>().enabled=false;
+		Dias.transform.GetChild(0).GetChild(1).GetComponent<Text>().enabled=false;
+		Dias.transform.GetChild (0).GetChild (2).GetComponent<Text> ().text = "Orion:\n\t";
+		Dias.transform.GetChild(0).GetChild(3).GetComponent<Text>().enabled=false;
+		foreach (var x in myText.ToCharArray()) {
+			Dias.transform.GetChild (0).GetChild (2).GetComponent<Text> ().text += x;
+			//audio.Play ();
+			yield return new WaitForSecondsRealtime (0.1f);
+		}
+		acabou = true;
+		Dias.transform.GetChild(0).GetChild(0).GetComponent<Text>().enabled=true;
+		Dias.transform.GetChild(0).GetChild(1).GetComponent<Text>().enabled=true;
+		Dias.transform.GetChild(0).GetChild(3).GetComponent<Text>().enabled=true;
+	}
+	IEnumerator LoadAsynchronously(int sceneIndex){
+		loadingBar.fillAmount = 0;
+		loadingScreen.GetComponent<Canvas>().enabled=true;
+		AsyncOperation operation = SceneManager.LoadSceneAsync (sceneIndex);
+
+		while (!operation.isDone) {
+			loadingBar.fillAmount =  Mathf.Clamp01 (operation.progress / .9f);
+			yield return null;
+		}
+		enabled = false;
+
+	}
+	/// <summary>
+	/// This is used inside Unitys Update() to update our SUN and MOON (if you have the MOON turned on). 
+	/// </summary>
+	void UpdateSunAndMoon ()
+	{
+		// This rotates the sun 360 degree in X-axis according to our current time of day.
+		lSun.transform.localRotation = Quaternion.Euler ((_fCurrentTimeOfDay * 360) - 90, 170, 0);
+
+		if (_bUseMoon == true)
+			lMoon.transform.localRotation = Quaternion.Euler ((_fCurrentTimeOfDay * 360) - 270, 170, 0);
+	}
+
+
+
+	void UpdateTimeset ()
+	{
+		if (_fCurrentTimeOfDay >= _fStartingSunrise && _fCurrentTimeOfDay <= _fStartingDay && enCurrTimeset != Timeset.SUNRISE)
+			SetCurrentTimeset (Timeset.SUNRISE);
+		else if (_fCurrentTimeOfDay >= _fStartingDay && _fCurrentTimeOfDay <= _fStartingSunset && enCurrTimeset != Timeset.DAY)
+			SetCurrentTimeset (Timeset.DAY);
+		else if (_fCurrentTimeOfDay >= _fStartingSunset && _fCurrentTimeOfDay <= _fStartingNight && enCurrTimeset != Timeset.SUNSET)
+			SetCurrentTimeset (Timeset.SUNSET);
+		else if (_fCurrentTimeOfDay >= _fStartingNight || _fCurrentTimeOfDay <= _fStartingSunrise && enCurrTimeset != Timeset.NIGHT)
+			SetCurrentTimeset (Timeset.NIGHT);
+	}
+
+	void SetCurrentTimeset (Timeset currentTime)
+	{
+		enCurrTimeset = currentTime;
+	}
+
+
 }
 

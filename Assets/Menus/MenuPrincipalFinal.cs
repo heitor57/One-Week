@@ -23,10 +23,14 @@ public class MenuPrincipalFinal : MonoBehaviour {
 
 		while (!operation.isDone) {
 			float progress = Mathf.Clamp01 (operation.progress / .9f);
+			if (progress > 99)
+				progress = 99;
 			loadingBar.fillAmount = progress;
 			percent.text = (loadingBar.fillAmount * 100).ToString ("f0");
 			yield return null;
 		}
+		GameObject.Find ("MenuInicial").GetComponent<Canvas> ().enabled = false;
+		enabled = false;
 
 	}
 	public void Sair(){

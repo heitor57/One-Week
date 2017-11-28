@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: c7c40ab374823fe459d2f9a26c544e8b
-timeCreated: 1510851557
+timeCreated: 1511391134
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
@@ -8,7 +8,8 @@ MonoImporter:
   - gWeatherMaster: {instanceID: 0}
   - lSun: {instanceID: 0}
   - lMoon: {instanceID: 0}
-  - Dias: {fileID: 1446475606543198, guid: 27136d19aad055a44bf8f57f0ea16ed8, type: 2}
+  - Dias: {instanceID: 0}
+  - sound: {fileID: 8300000, guid: 47208100e5969204ebab90a7ae363c80, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

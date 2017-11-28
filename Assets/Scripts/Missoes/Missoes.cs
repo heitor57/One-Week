@@ -24,8 +24,8 @@ public class Missoes : MonoBehaviour {
 	public void Start(){
 		cb = GameObject.Find ("Player").GetComponent<PlayerBehaviour> ();
 		inventario = GameObject.Find("Player").GetComponent<PlayerInventory>();
-		c=GameObject.Find("Congratulations");
-
+		c = GameObject.Find("Congratulations");
+		c.GetComponent<Canvas> ().enabled = false;
 		inventoryItemList = (ItemDataBaseList)Resources.Load("ItemDatabase");
 	}
 
@@ -97,7 +97,7 @@ public class Missoes : MonoBehaviour {
 	public void Update () {
 		if(concluida==true && primeira==false){
 			cb.Aumentarxp (xp);
-
+			c.GetComponent<Canvas> ().enabled = true;
 			c.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = ("\n" + this.getNome () + "\t" + this.cont + "/" + this.missao.quantidade);
 			string rew = (this.xp+" Pontos de Experiência");
 			if(recompensaID!=null){//da a recompensa				
@@ -105,9 +105,9 @@ public class Missoes : MonoBehaviour {
 				rew += (" e\n"+inventoryItemList.getItemByID (missao.recompensaID).itemName);
 			}
 			c.transform.GetChild(0).GetChild(3).GetComponent<Text>().text = rew;
-			c.SetActive (true);
+
 			if (Input.GetKey (KeyCode.Return) || Input.GetKey (KeyCode.KeypadEnter)) {
-				c.SetActive (false);
+				c.GetComponent<Canvas> ().enabled = false;
 			}
 			primeira = true;
 		}

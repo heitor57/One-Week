@@ -22,6 +22,8 @@ public class PlayerInventory : MonoBehaviour
     Text stmText;
 	Text xpText;
 	Text cLevel;
+	Text armorTxt;
+	Image armorImg;
 	Image xpImage;
     Image hpImage;
     Image stmImage;
@@ -32,6 +34,7 @@ public class PlayerInventory : MonoBehaviour
 	float maxXP = 100;// Quanto pro proximo nivel, tem que alterar de acordo com o nivel atual
     float maxDamage = 0;
     float maxArmor = 0;
+	float armadura=0;
 
 	public float currentHealth = 0;
 	float currentLevel=1;	
@@ -95,6 +98,7 @@ public class PlayerInventory : MonoBehaviour
 		{
 			UpdateStmBar();
 			UpdateHPBar();
+			UpdateArmorBar ();
 			UpdateXPBar();
 		}
 
@@ -201,16 +205,19 @@ public class PlayerInventory : MonoBehaviour
 
         if (HPCanvas != null)
         {
-            hpText = HPCanvas.transform.GetChild(1).GetChild(0).GetComponent<Text>();
-            stmText = HPCanvas.transform.GetChild(2).GetChild(0).GetComponent<Text>();
-			xpText = HPCanvas.transform.GetChild(3).GetChild(0).GetComponent<Text>();
-			cLevel = HPCanvas.transform.GetChild(5).GetComponent<Text>();
+			armorTxt = HPCanvas.transform.GetChild(1).GetChild(0).GetComponent<Text>();
+            hpText = HPCanvas.transform.GetChild(2).GetChild(0).GetComponent<Text>();
+            stmText = HPCanvas.transform.GetChild(3).GetChild(0).GetComponent<Text>();
+			xpText = HPCanvas.transform.GetChild(4).GetChild(0).GetComponent<Text>();
+			cLevel = HPCanvas.transform.GetChild(6).GetComponent<Text>();
 
-			xpImage = HPCanvas.transform.GetChild(3).GetComponent<Image>();
-            hpImage = HPCanvas.transform.GetChild(1).GetComponent<Image>();
-            stmImage = HPCanvas.transform.GetChild(2).GetComponent<Image>();
+			armorImg = HPCanvas.transform.GetChild(1).GetComponent<Image>();
+			xpImage = HPCanvas.transform.GetChild(4).GetComponent<Image>();
+            hpImage = HPCanvas.transform.GetChild(2).GetComponent<Image>();
+            stmImage = HPCanvas.transform.GetChild(3).GetComponent<Image>();
 
             UpdateHPBar();
+			UpdateArmorBar ();
             UpdateStmBar();
 			UpdateXPBar();
         }
@@ -238,6 +245,11 @@ public class PlayerInventory : MonoBehaviour
         float fillAmount = currentHealth / maxHealth;
 		hpImage.fillAmount = fillAmount;
     }
+	void UpdateArmorBar()
+	{
+		armorTxt.text = ""+armadura;
+		hpImage.fillAmount = (GetComponent<PlayerBehaviour>().GetVida()+armadura)/ maxHealth;
+	}
 
     void UpdateStmBar()
     {
@@ -298,6 +310,7 @@ public class PlayerInventory : MonoBehaviour
         {
             UpdateStmBar();
             UpdateHPBar();
+			UpdateArmorBar ();
 			UpdateXPBar();
         }
     }
@@ -314,8 +327,10 @@ public class PlayerInventory : MonoBehaviour
 		Debug.Log (item.itemType);
         for (int i = 0; i < item.itemAttributes.Count; i++)
         {
-            if (item.itemAttributes[i].attributeName == "Health")
-                maxHealth += item.itemAttributes[i].attributeValue;
+			if (item.itemAttributes [i].attributeName == "Health") {
+				armadura += item.itemAttributes [i].attributeValue;
+				maxHealth += item.itemAttributes [i].attributeValue;
+			}
             if (item.itemAttributes[i].attributeName == "Mana")
                 maxStm += item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Armor")
@@ -327,6 +342,7 @@ public class PlayerInventory : MonoBehaviour
         {
             UpdateStmBar();
             UpdateHPBar();
+			UpdateArmorBar ();
 			UpdateXPBar();
         }
 
@@ -343,8 +359,10 @@ public class PlayerInventory : MonoBehaviour
 		}
         for (int i = 0; i < item.itemAttributes.Count; i++)
         {
-            if (item.itemAttributes[i].attributeName == "Health")
-                maxHealth -= item.itemAttributes[i].attributeValue;
+			if (item.itemAttributes [i].attributeName == "Health") {
+				armadura -= item.itemAttributes [i].attributeValue;
+				maxHealth -= item.itemAttributes [i].attributeValue;
+			}
             if (item.itemAttributes[i].attributeName == "Mana")
                 maxStm -= item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Armor")
@@ -356,6 +374,7 @@ public class PlayerInventory : MonoBehaviour
         {
             UpdateStmBar();
             UpdateHPBar();
+			UpdateArmorBar ();
 			UpdateXPBar();
         }
 
@@ -368,6 +387,7 @@ public class PlayerInventory : MonoBehaviour
     {
 		UpdateStmBar ();
 		UpdateHPBar ();
+		UpdateArmorBar ();
 		UpdateXPBar ();
 
         if (Input.GetKeyDown(inputManagerDatabase.CharacterSystemKeyCode))

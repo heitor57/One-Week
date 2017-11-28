@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+	<dialogos>
+		<dialogo texto="missao">
+			<dialogo texto="Meu senhor, me ajude...">
+				<dialogo texto="Fale meu amigo.">
+					<dialogo texto="Meu cão, o satanás, ele escapou por essas bandas ontem pela noite.">
+						<dialogo texto="Satanás?Que nome...">
+							<dialogo texto="Ele era o cão de meu pai, o ultimo do clero de Sperare, Padre Lactio.">
+								<dialogo texto="Pode procurá-lo para mim?">
+									
+									
+										<dialogo texto="Farei o possivel para encontrar Satanás."> </dialogo>
+										<dialogo texto="Receio que seja muito complicado encontrá-lo.">
+											
+										
+									</dialogo>
+								</dialogo>
+							
+						
+					</dialogo>
+				</dialogo>
+			</dialogo>
+		</dialogo>
+	</dialogos>

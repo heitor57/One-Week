@@ -6,7 +6,7 @@ public class XP : MonoBehaviour {
 
 	public int xp;
 
-	public int darXP(int mult){
-		return (xp * mult);
+	public int darXP(float mult){
+		return (int)(xp * mult);
 	}
 }

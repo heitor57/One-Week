@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NPC : MonoBehaviour {
 	public TextAsset xml;
@@ -17,7 +18,7 @@ public class NPC : MonoBehaviour {
 	string tipo;
 	GUIStyle guiStyle = new GUIStyle();
 	bool conversa=false;
-	//public GameObject caixa;
+	private GameObject caixa;
 
 
 
@@ -27,7 +28,9 @@ public class NPC : MonoBehaviour {
 		Dist = GameObject.Find ("Player").transform.position;
 		Dist = Dist - transform.position;
 		xml = SelecionarDialogo.selecionar ();
-
+		guiStyle.alignment = TextAnchor.MiddleCenter;
+		caixa = GameObject.Find ("Dialogs");
+		caixa.GetComponent<Canvas> ().enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -64,6 +67,7 @@ public class NPC : MonoBehaviour {
 					podeInteragir = false;
 					primeira = true;
 					conversa = false;
+					caixa.GetComponent<Canvas> ().enabled = false;
 				}
 			}
 		}
@@ -88,7 +92,7 @@ public class NPC : MonoBehaviour {
 		if (conversa == false && podeInteragir == true) {
 			//mensagem quando o usuario passar perto de um npc
 			guiStyle.fontSize=20;
-			GUI.Label (new Rect (posiX, posiY+20, 1000, 100), "Interagir- ENTER",guiStyle);
+			GUI.Box (new Rect (0, posiY+20, 1000, 100), "Interagir- ENTER",guiStyle);
 			//se o usuario apertar enter a conversa vai começar
 			if (Input.GetKeyDown (KeyCode.Return)) {
 				conversa = true;
@@ -102,36 +106,50 @@ public class NPC : MonoBehaviour {
 	//GUI.Label (new Rect (posiX, posiY, 1000, 100), a[0]);
 		//GUI.color = Color.yellow;
 		if (conversa) {
+			
 			if (primeira) {
-				if (!Input.GetKey(KeyCode.Escape)) {
-					GUI.color = Color.red;
-					//GUI.Label (new Rect (posiX, posiY, 1000, 100), a[0]);
+				if (!Input.GetKey (KeyCode.Escape)) {
+					//GUI.color = Color.red; //Moyses comentou isto pra usar o codigo abaixo no lugar
+					//caixa.transform.GetChild (2).GetComponent<Text> ().color = Color.red;
+					//GUI.Label (new Rect (posiX, posiY, 1000, 100), a[0]); //Juan que comentou isto, n sei pq
 				} else {
 					podeInteragir = false;
 					primeira = true;
 					conversa = false;
+					caixa.GetComponent<Canvas> ().enabled = false;
 				}
-			}
-			else if (!Input.GetKey (KeyCode.Escape)) {
-
+				caixa.GetComponent<Canvas> ().enabled = false;
+			} else if (!Input.GetKey (KeyCode.Escape)) {
+				caixa.GetComponent<Canvas> ().enabled = true;
 				for (i = 0; i < (a.Length); i++) {
 					GUI.color = Color.black;
+					caixa.transform.GetChild(2).GetComponent<Text>().color = Color.black;
 					if (opcaoConversa == i) {
 						GUI.color = Color.red;
+						//caixa.transform.GetChild(2).GetComponent<Text>().color = Color.red;
 					}
 					posiY = posiY + 10;
-					GUI.Label (new Rect (posiX, posiY, 1000, 100), a [i]);
+					//GUI.Label (new Rect (posiX, posiY, 1000, 100), a [i]);
+					//StartCoroutine ( type (a[i]) );
+					caixa.transform.GetChild(2).GetComponent<Text>().text=a [i];
 				} 
 
-			}else {
+			} else {
 				podeInteragir = false;
 				primeira = true;
 				conversa = false;
-
+				caixa.GetComponent<Canvas> ().enabled = false;
 			}
 		}
 
 
+	}
+	IEnumerator type(string myText){
+		
+		foreach (var x in myText.ToCharArray()) {
+			caixa.transform.GetChild(2).GetComponent<Text>().text += x;
+			yield return new WaitForSecondsRealtime (0.2f);
+		}
 	}
 }
 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+	<dialogos>
+		<dialogo texto="missao">
+			<dialogo texto="Orion, como está?">
+				<dialogo texto="Vou indo, mas preciso saber de algo...">
+					<dialogo texto="Diga.">
+						<dialogo texto="Andas a saber algo sobre alguma possivel revolta contra nossa coroa?">
+							<dialogo texto="Revolta? Contra a coroa, não seja ingênuo, deve ser apenas mais um boato.">
+								<dialogo texto="Pode até ser, mas não sei, sinto como se toda essa situação fosse familiar.">
+									<dialogo texto="Ora meu amigo, não recomendo, mas se lhe persistir essa idéia ">
+										<dialogo texto="recomendo buscar informações na própria Verus.">
+										<dialogo texto="Realmente, posso ir até Verus ver o que encontro."> </dialogo>
+										<dialogo texto="Acho que não seria nada mal buscar informações ">
+											<dialogo texto="com os bandoleiros dessas bandas, eles costumam saber de tudo."></dialogo>
+										
+									</dialogo>
+								</dialogo>
+							</dialogo>
+						</dialogo>
+					</dialogo>
+				</dialogo>
+			</dialogo>
+		</dialogo>
+	</dialogos>

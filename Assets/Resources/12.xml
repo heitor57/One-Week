@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+	<dialogos>
+		<dialogo texto="missao">
+			<dialogo texto="Orion,bom revê-lo.">
+				<dialogo texto="E ai cara dos livros mágicos.">
+					<dialogo texto="Vejo que conseguiu concluir a primeira aventura.">
+						<dialogo texto="Primeira? Avetura?">
+							<dialogo texto="Colete os bastões mágicos das Ruínas em Viridis,">
+								<dialogo texto="aqueles conhecidos por  Thu toriays. Aceita?">
+									
+									
+										<dialogo texto="Acho que consigo fazer isso em 10 minutos."> </dialogo>
+										<dialogo texto="Desculpe, mas essa conversa está ficando muito estranha. Adeus.">
+											
+										
+									</dialogo>
+								</dialogo>
+							
+						
+					</dialogo>
+				</dialogo>
+			</dialogo>
+		</dialogo>
+	</dialogos>

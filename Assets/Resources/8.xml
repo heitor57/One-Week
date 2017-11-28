@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+	<dialogos>
+		<dialogo texto="missao">
+			<dialogo texto="Ora ora, meu amigo Orion.">
+				<dialogo texto="Não posso dizer o mesmo Talon.">
+					<dialogo texto="Pega leve capitão.">
+						<dialogo texto="Preciso de um favor.">
+							<dialogo texto="Pode pegar uma cadeira pra esperar.">
+								<dialogo texto="Por favor, sabe que sobrevivo vendendo humildemente meus produtos.">
+									<dialogo texto="Mas acabei me envolvendo com um cara, Kayle, o desgraçado roubou meu capacete.">
+										<dialogo texto="Será que você como figura da lei poderia dar uma lição nele, posso pagar muito bem.">
+										<dialogo texto="Você só pode estar brincando, é claro que não."> </dialogo>
+										<dialogo texto="Certo...vou ver o que posso fazer ">
+											<dialogo texto="quanto a isso."></dialogo>
+										
+									</dialogo>
+								</dialogo>
+							</dialogo>
+							</dialogo>
+						</dialogo>
+					</dialogo>
+				</dialogo>
+			</dialogo>
+		</dialogo>
+	</dialogos>

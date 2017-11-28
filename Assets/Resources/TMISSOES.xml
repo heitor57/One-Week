@@ -60,4 +60,69 @@
 		<recompensaID>6</recompensaID>
 		<tipo>coleta</tipo>
 	</missao>
+
+	<missao>
+		<id>7</id>
+		<nome>Perdido</nome>
+		<pedidoID>26</pedidoID>
+		<quantidade>1</quantidade>
+		<xp>100</xp>
+		<recompensaID>6</recompensaID>
+		<tipo>coleta</tipo>
+	</missao>
+
+	<missao>
+		<id>8</id>
+		<nome>Assassino</nome>
+		<pedidoID></pedidoID>
+		<quantidade>1</quantidade>
+		<xp>100</xp>
+		<recompensaID>6</recompensaID>
+		<tipo>coleta</tipo>
+	</missao>
+
+
+	<missao>
+		<id>9</id>
+		<nome>Cão perdido</nome>
+		<pedidoID></pedidoID>
+		<quantidade>13</quantidade>
+		<xp>100</xp>
+		<recompensaID>6</recompensaID>
+		<tipo>coleta</tipo>
+	</missao>
+
+	<missao>
+		<id>10</id>
+		<nome>Mito da Espada</nome>
+		<pedidoID></pedidoID>
+		<quantidade>1</quantidade>
+		<xp>100</xp>
+		<recompensaID>6</recompensaID>
+		<tipo>coleta</tipo>
+	</missao>
+
+	<missao>
+		<id>11</id>
+		<nome>Livros Mágicos</nome>
+		<pedidoID></pedidoID>
+		<quantidade>7</quantidade>
+		<xp>100</xp>
+		<recompensaID>6</recompensaID>
+		<tipo>coleta</tipo>
+	</missao>
+
+	<missao>
+		<id>12</id>
+		<nome>Bastões</nome>
+		<pedidoID></pedidoID>
+		<quantidade>3</quantidade>
+		<xp>100</xp>
+		<recompensaID>6</recompensaID>
+		<tipo>coleta</tipo>
+	</missao>
+
+
+
+
 </missoes>

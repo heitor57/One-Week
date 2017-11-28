@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+	<dialogos>
+		<dialogo texto="missao">
+			<dialogo texto="Capitão, tenho notícias de Verus.">
+				<dialogo texto="Fale.">
+					<dialogo texto="Alguns soldados andam dizendo pelos cantos de uma possível revolta.">
+						<dialogo texto="Revolta?">
+							<dialogo texto="Isso, ainda não sabemos por parte de quem ou por onde, mas é algo perigoso.">
+								
+									
+										<dialogo texto="Posso buscar mais informações com o Capitão do Leste."> </dialogo>
+										<dialogo texto="Esqueça, são só boatos, nosso rei ainda ">
+											<dialogo texto="tem sua influência."></dialogo>
+										
+								
+								</dialogo>
+							</dialogo>
+						</dialogo>
+					</dialogo>
+				</dialogo>
+			</dialogo>
+		</dialogo>
+	</dialogos>

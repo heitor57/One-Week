@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+	<dialogos>
+		<dialogo texto="missao">
+			<dialogo texto="Capitao Orion...">
+				<dialogo texto="Bom dia Sir. Parker lee">
+					<dialogo texto="Gostaria de saber oque anda acontecendo em Sperare">
+						<dialogo texto="São assuntos oficiais, sinto muito.">
+							<dialogo texto = "Entendi Capitão"></dialogo>
+						</dialogo>
+						<dialogo texto="Sperare anda passando por dias dificeis">
+							<dialogo texto ="Mas vai dar pra melhorar, certo?">
+								<dialogo texto = "Depende apenas de nós">
+									<dialogo texto="Certamente"></dialogo>
+								</dialogo>
+								<dialogo texto = "Não vai">
+									<dialogo texto="Vai dar sim!!!!"></dialogo>
+								</dialogo>
+							</dialogo>
+						</dialogo> 
+					</dialogo>
+				</dialogo>
+			</dialogo>
+		</dialogo>
+	</dialogos>

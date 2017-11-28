@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+	<dialogos>
+		<dialogo texto="missao">
+			<dialogo texto="Orion, por favor, me ajude.">
+				<dialogo texto="Fale caro aldeão.">
+					<dialogo texto="Meu filho, Lucian... ele desapareceu tem 2 dias.">
+						<dialogo texto="Desapareceu?">
+							<dialogo texto="Isso, ele estava a caminho de Verus para visitar sua mão e sumiu, ele nem chegou até a capital.">
+								<dialogo texto="Por favor, encontre-o para mim, ainda tenho esperança de encontrá-lo com vida">
+									
+										<dialogo texto="Farei o possivel."> </dialogo>
+										<dialogo texto="Lamento, mas não tenho muitas esperanças">
+											<dialogo texto="quanto a isso."></dialogo>
+										
+									</dialogo>
+								</dialogo>
+							</dialogo>
+						</dialogo>
+					</dialogo>
+				</dialogo>
+			</dialogo>
+		</dialogo>
+	</dialogos>

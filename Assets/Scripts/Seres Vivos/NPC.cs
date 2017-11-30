@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
+using UnityEngine.UI;
+
 public class NPC : MonoBehaviour {
 	public TextAsset xml;
 	MUsuario AuxMissao;
@@ -17,7 +18,7 @@ public class NPC : MonoBehaviour {
 	string tipo;
 	GUIStyle guiStyle = new GUIStyle();
 	bool conversa=false;
-	//public GameObject caixa;
+	private GameObject caixa;
 
 
 
@@ -27,7 +28,9 @@ public class NPC : MonoBehaviour {
 		Dist = GameObject.Find ("Player").transform.position;
 		Dist = Dist - transform.position;
 		xml = SelecionarDialogo.selecionar ();
-
+		guiStyle.alignment = TextAnchor.MiddleCenter;
+		caixa = GameObject.Find ("Dialogs");
+		caixa.GetComponent<Canvas> ().enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -36,12 +39,10 @@ public class NPC : MonoBehaviour {
 		Dist = Dist - transform.position;
 		if (podeInteragir) {
 			if (conversa) {
-				IAIntegration.TalkNPC (GameObject.Find ("Player"), gameObject, true);
-
 				//caixa.SetActive (true);
 				if (primeira) {
 					TesteParser.Ler (xml.text);
-					a = TesteParser.PegarFilhos ();
+					a = TesteParser.PegarFilhos();
 					if (Input.GetKeyDown (KeyCode.Return))
 						primeira = false;
 				}
@@ -54,22 +55,21 @@ public class NPC : MonoBehaviour {
 				} else if (opcaoConversa < 0) {
 					opcaoConversa = a.Length - 1;
 				}
-				if (Input.GetKeyDown (KeyCode.Return) && primeira == false) {
+				if (Input.GetKeyDown (KeyCode.Return)&& primeira==false) {
 
 					a = TesteParser.PegarNoSeguinte (opcaoConversa);
 					opcaoConversa = 0;
 					if (TesteParser.IDmissao () != null) {
-						GetComponent<Missoes> ().qual (TesteParser.IDmissao ());
+						GetComponent<Missoes> ().qual (TesteParser.IDmissao());
 					}
 				}
 				if (a.Length == 0) {
 					podeInteragir = false;
 					primeira = true;
 					conversa = false;
+					caixa.GetComponent<Canvas> ().enabled = false;
 				}
 			}
-		} else {
-			IAIntegration.TalkNPC(GameObject.Find("Player"),gameObject,false);
 		}
 	}
 	void OnGUI(){
@@ -92,7 +92,7 @@ public class NPC : MonoBehaviour {
 		if (conversa == false && podeInteragir == true) {
 			//mensagem quando o usuario passar perto de um npc
 			guiStyle.fontSize=20;
-			GUI.Label (new Rect (posiX, posiY+20, 1000, 100), "Interagir- ENTER",guiStyle);
+			GUI.Box (new Rect (0, posiY+20, 1000, 100), "Interagir- ENTER",guiStyle);
 			//se o usuario apertar enter a conversa vai começar
 			if (Input.GetKeyDown (KeyCode.Return)) {
 				conversa = true;
@@ -106,36 +106,50 @@ public class NPC : MonoBehaviour {
 	//GUI.Label (new Rect (posiX, posiY, 1000, 100), a[0]);
 		//GUI.color = Color.yellow;
 		if (conversa) {
+			
 			if (primeira) {
-				if (!Input.GetKey(KeyCode.Escape)) {
-					GUI.color = Color.red;
-					//GUI.Label (new Rect (posiX, posiY, 1000, 100), a[0]);
+				if (!Input.GetKey (KeyCode.Escape)) {
+					//GUI.color = Color.red; //Moyses comentou isto pra usar o codigo abaixo no lugar
+					//caixa.transform.GetChild (2).GetComponent<Text> ().color = Color.red;
+					//GUI.Label (new Rect (posiX, posiY, 1000, 100), a[0]); //Juan que comentou isto, n sei pq
 				} else {
 					podeInteragir = false;
 					primeira = true;
 					conversa = false;
+					caixa.GetComponent<Canvas> ().enabled = false;
 				}
-			}
-			else if (!Input.GetKey (KeyCode.Escape)) {
-
+				caixa.GetComponent<Canvas> ().enabled = false;
+			} else if (!Input.GetKey (KeyCode.Escape)) {
+				caixa.GetComponent<Canvas> ().enabled = true;
 				for (i = 0; i < (a.Length); i++) {
 					GUI.color = Color.black;
+					caixa.transform.GetChild(2).GetComponent<Text>().color = Color.black;
 					if (opcaoConversa == i) {
 						GUI.color = Color.red;
+						//caixa.transform.GetChild(2).GetComponent<Text>().color = Color.red;
 					}
 					posiY = posiY + 10;
-					GUI.Label (new Rect (posiX, posiY, 1000, 100), a [i]);
+					//GUI.Label (new Rect (posiX, posiY, 1000, 100), a [i]);
+					//StartCoroutine ( type (a[i]) );
+					caixa.transform.GetChild(2).GetComponent<Text>().text=a [i];
 				} 
 
-			}else {
+			} else {
 				podeInteragir = false;
 				primeira = true;
 				conversa = false;
-
+				caixa.GetComponent<Canvas> ().enabled = false;
 			}
 		}
 
 
+	}
+	IEnumerator type(string myText){
+		
+		foreach (var x in myText.ToCharArray()) {
+			caixa.transform.GetChild(2).GetComponent<Text>().text += x;
+			yield return new WaitForSecondsRealtime (0.2f);
+		}
 	}
 }
 

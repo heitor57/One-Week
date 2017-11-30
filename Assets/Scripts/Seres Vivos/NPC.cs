@@ -40,6 +40,7 @@ public class NPC : MonoBehaviour {
 		if (podeInteragir) {
 			if (conversa) {
 				//caixa.SetActive (true);
+				IAIntegration.TalkNPC (GameObject.Find ("Player"), gameObject, true);
 				if (primeira) {
 					TesteParser.Ler (xml.text);
 					a = TesteParser.PegarFilhos();
@@ -69,6 +70,8 @@ public class NPC : MonoBehaviour {
 					conversa = false;
 					caixa.GetComponent<Canvas> ().enabled = false;
 				}
+			}else{
+				IAIntegration.TalkNPC (GameObject.Find ("Player"), gameObject, false);			
 			}
 		}
 	}

@@ -16,6 +16,7 @@ public class Formation : RAINAction
 	private GameObject lider;
 	private Entity entity;
 	private List<RAINAspect> slots;
+	private Vector2 sizeformation;
     public override void Start(RAIN.Core.AI ai)
     {
         base.Start(ai);
@@ -23,7 +24,9 @@ public class Formation : RAINAction
 		animator = ((RAIN.Animation.BasicAnimator)ai.Animator).UnityAnimator;
 		slots = (List<RAINAspect>)ai.WorkingMemory.GetItem("slot");
 		entity = ai.Body.GetComponent<RAIN.Entities.EntityRig>().Entity;
-    }
+		sizeformation = ai.WorkingMemory.GetItem<GameObject> ("Leader").GetComponent<SerVivo> ().GetTamanhoFormacao ();
+
+	}
 
     public override ActionResult Execute(RAIN.Core.AI ai)
 	{
@@ -63,6 +66,7 @@ public class Formation : RAINAction
 
 		if (valid_slots.Count == 0) { // Primeiro slot de uma formação é feito aqui.
 			temp = lider_loc;
+
 			spotx = 0;
 			spoty = -1;
 			temp = temp + 
@@ -72,19 +76,28 @@ public class Formation : RAINAction
 			ai.WorkingMemory.SetItem<Vector3> ("FormacaoPos", temp);
 			return ActionResult.SUCCESS;
 		} else {// Busca por um slot caso não seja o primeiro.
-			for (z = -1; z >= -10; z--) {
-				for (x = -1; 2 > x; x++) {
+			int xpos =0;
+			for (z = -1; z >= -sizeformation.y; z--) {
+				for (x = 0; (int)sizeformation.x > x; x++) {
 					temp = lider_loc;
+					if (x == 0) {
+						xpos = 0;
+					} else if(x%2 == 1){
+						xpos = Mathf.Abs (xpos);
+						xpos++;
+					}else{
+						xpos = -xpos;
+					}
 					temp = temp + 
-						new Vector3(+Mathf.Sin(Mathf.Deg2Rad*lider_rot)*z +Mathf.Cos(Mathf.Deg2Rad*lider_rot)*x ,
+						new Vector3(+Mathf.Sin(Mathf.Deg2Rad*lider_rot)*z +Mathf.Cos(Mathf.Deg2Rad*lider_rot)*xpos ,
 							0,
-							+Mathf.Cos(Mathf.Deg2Rad*lider_rot)*z -Mathf.Sin(Mathf.Deg2Rad*lider_rot)*x);
+							+Mathf.Cos(Mathf.Deg2Rad*lider_rot)*z -Mathf.Sin(Mathf.Deg2Rad*lider_rot)*xpos);
 					for (j = 0; valid_slots.Count > j; j++) {
 						
-						if (valid_slots[j].Slot.z == z && valid_slots[j].Slot.x == x)
+						if (valid_slots[j].Slot.z == z && valid_slots[j].Slot.x == xpos)
 							break;
 						if (valid_slots.Count - 1 == j) {
-							((SlotAspect)entity.GetAspect("slot")).Slot= new Vector3(x,0,z);
+							((SlotAspect)entity.GetAspect("slot")).Slot= new Vector3(xpos,0,z);
 							ai.WorkingMemory.SetItem<Vector3> ("FormacaoPos", temp);
 							return ActionResult.SUCCESS;
 						}
@@ -96,10 +109,27 @@ public class Formation : RAINAction
 		return ActionResult.SUCCESS;
 	
     }
-		
+	/*
+	 * Talvez venha a ser utilizado novamente
+	Vector2 quadraticdistributionx(float area){
+		int val1=0, val2=0;
+		if (area >= 3 && (area + 3) % 2 == 0) {
+			val1 = -((int)area-1) / 2;
+			val2 = ((int)area-1) / 2;
+		} else if(area>=0){
+			val1 = -((int)area) / 2;
+			val2 = ((int)area-1) / 2;
+		}
+		Vector2 vector =  new Vector2(val1,val2);
+
+		Debug.Log (vector);
+		return vector;
+
+	}*/
     public override void Stop(RAIN.Core.AI ai)
     {
 		
         base.Stop(ai);
+
     }
 }

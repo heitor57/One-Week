@@ -14,19 +14,19 @@ public class Missoes : MonoBehaviour {
 	private PlayerInventory inventario;
 	private List<Item> itensNoInventario;
 	private bool feito;
-	private CharacterBase cb;
-	private GameObject c;//Completou Missao
+	public PlayerBehaviour cb;
+	public GameObject c;//Completou Missao
 	public Missao missao;
 	public TextAsset xml;
 	static ItemDataBaseList inventoryItemList;
 	public bool primeira = false;
 
 	public void Start(){
-		cb = GameObject.Find ("Player").GetComponent<PlayerBehaviour> ();
 		c = GameObject.Find("Congratulations");
-		c.GetComponent<Canvas> ().enabled = false;
 		inventario = GameObject.Find("Player").GetComponent<PlayerInventory>();
 		inventoryItemList = (ItemDataBaseList)Resources.Load("ItemDatabase");
+		StartCoroutine (wait ());
+		cb = GameObject.Find ("Player").GetComponent<PlayerBehaviour> ();
 	}
 
 	public void qual(string i){
@@ -99,6 +99,7 @@ public class Missoes : MonoBehaviour {
 		return concluida;
 	}*/
 	public void Update () {
+		
 		if(concluida==true && primeira==false){
 			//if(pedidoID == )
 			cb.Aumentarxp (xp);
@@ -151,5 +152,11 @@ public class Missoes : MonoBehaviour {
 			}
 		}
 		return c;
+	}
+
+	public IEnumerator wait(){
+		yield return new WaitForSecondsRealtime (2f);
+
+
 	}
 }

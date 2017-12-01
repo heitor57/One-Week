@@ -18,6 +18,7 @@ public class Sword : MonoBehaviour {
 	void Start()
 	{
 		audioSource = GetComponent<AudioSource>();
+		if(transform.parent.gameObject!=null)
 		owner = transform.parent.gameObject;
 		perna();
 		dmg += GetComponentInParent<Destrutiveis>().GetDano();

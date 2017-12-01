@@ -18,8 +18,8 @@ public class Sangue : MonoBehaviour {
 		guiStyle.alignment = TextAnchor.MiddleCenter;
 		cb = GameObject.Find ("Player").GetComponent<PlayerBehaviour> ();
 		c = GameObject.Find("Congratulations");
-		c.GetComponent<Animation>().enabled=false;
-		c.SetActive(false);
+		StartCoroutine (wait ());
+
 	}
 
 	void Update(){
@@ -59,6 +59,11 @@ public class Sangue : MonoBehaviour {
 			}
 			finall = true;
 		}
+
+	}
+	public IEnumerator wait(){
+		yield return new WaitForSecondsRealtime (2f);
+
 
 	}
 }

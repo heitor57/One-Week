@@ -19,7 +19,7 @@ public class s : MonoBehaviour {
 		guiStyle.alignment = TextAnchor.MiddleCenter;
 		cb = GameObject.Find ("Player").GetComponent<PlayerBehaviour> ();
 		c = GameObject.Find("Congratulations");
-		c.GetComponent<Animation>().enabled=false;
+		//c.GetComponent<Animation>().enabled=false;
 		c.SetActive(false);
 	}
 

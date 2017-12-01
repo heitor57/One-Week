@@ -1,12 +1,12 @@
 fileFormatVersion: 2
 guid: 93bf709b96c57da4a84db6cc2ed211e9
-timeCreated: 1510346842
+timeCreated: 1512045383
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - xml: {instanceID: 0}
-  - caixa: {fileID: 1146726760218888, guid: aeaa05df2c7c03d4eaf8a908e932280f, type: 2}
+  - img: {fileID: 2800000, guid: 0e9a6a30e37200a4cb7fd23a1cd0b208, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

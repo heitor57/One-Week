@@ -105,7 +105,7 @@
 	<missao>
 		<id>11</id>
 		<nome>Livros Mágicos</nome>
-		<pedidoID></pedidoID>
+		<pedidoID>28</pedidoID>
 		<quantidade>7</quantidade>
 		<xp>100</xp>
 		<recompensaID>6</recompensaID>
@@ -115,7 +115,7 @@
 	<missao>
 		<id>12</id>
 		<nome>Bastões</nome>
-		<pedidoID></pedidoID>
+		<pedidoID>19</pedidoID>
 		<quantidade>3</quantidade>
 		<xp>100</xp>
 		<recompensaID>6</recompensaID>

@@ -226,6 +226,7 @@ public class ToD_Base : MonoBehaviour
 	private bool foi=false,acabou=false;
 	private GameObject loadingScreen;
 	private Image loadingBar;
+	private Porta_Leste pl;
 
 	/// <summary>
 	/// Unity function - See Unity documentation
@@ -250,6 +251,10 @@ public class ToD_Base : MonoBehaviour
 		loadingScreen = GameObject.Find ("loadingScreen");
 		loadingBar = loadingScreen.transform.GetChild (0).GetComponent<Image>();
 		loadingScreen.GetComponent<Canvas>().enabled=false;
+
+		pl = GameObject.Find ("Mapa/Itens_Mapa/Casa dos Capitães (1)").GetComponent<Porta_Leste> ();
+		pl.enabled = false;
+
 //		if (Dias != null)
 //			Debug.Log ("Dias:" + Dias.transform.GetChild(0).childCount);
 //		else
@@ -275,7 +280,7 @@ public class ToD_Base : MonoBehaviour
 
 		if (_iAmountOfDaysPlayed==0 && !foi) {
 			Time.timeScale = 0;
-			StartCoroutine(type ("O quê?\n\tEu voltei no tempo!\n\tAquele caveleiro vermelho...\n\tPreciso encontra-lo...\n\te quando-o encontrar, eu o matarei!"));
+			StartCoroutine(type ("O quê?\n\tComo assim? O que aconteceu? Eu...\n\tAqueles espiões...\n\tPreciso encontra-los... e eliminá-los antes do golpe.\n\tNão posso permitir que eles apoem o Regente!"));
 			foi = true;
 		}
 		if(Dias.GetComponent<Canvas> ().enabled && acabou){
@@ -309,23 +314,26 @@ public class ToD_Base : MonoBehaviour
 			switch (_iAmountOfDaysPlayed) {
 			case 1:
 				{
-					StartCoroutine(type ( "Foi encontrado dois acampamentos de Bandidos ao Leste\n\tPreciso investigá-los"));
+					StartCoroutine(type ( "Investigarei os acampamentos de bandidos no Leste \tprocurando pelo machado de Sr.Sthiler"));
+					GameObject.Find ("Player").GetComponent<PlayerBehaviour> ().AdicionarMissao (new Missoes ("Machado Perdido",250,"coleta",20,1));
 
 				}
 				break;
 			case 2:
 				{
 					StartCoroutine(type ("Marquei de encontrar com o capitão do Leste.\n\tTalvez ele tenha informações..."));
+					pl.enabled = true;
+
 				}
 				break;
 			case 3:
 				{
-					StartCoroutine(type ("Sir. Basílio me chamou para caçar tigres no Bosque de Boreas\n\tVaiser um bom treinamento"));
+					StartCoroutine(type ("Sir. Basílio me pediu para eliminar os tigres no Bosque de Boreas\n\tVai ser um bom treinamento"));
 				}
 				break;
 			case 4:
 				{
-					StartCoroutine(type ("O Machado de Sir. Stihler foi perdido.\n\tPreciso recupera-lo!"));
+					StartCoroutine(type ("Um aldeão de Boreas perdeu seu filho.\n\tPreciso encontra-lo."));
 				}
 				break;
 			case 5:

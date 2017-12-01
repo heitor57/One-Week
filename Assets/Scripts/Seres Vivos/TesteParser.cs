@@ -48,6 +48,34 @@ public class TesteParser{
 		}
 	}
 
+	public static string Personalidade(){
+
+		XmlElement aux2;
+		XmlAttribute aux3;
+		aux2 = (XmlElement)root;
+		if (aux2.GetAttributeNode ("pers") != null) {
+			aux3 = aux2.GetAttributeNode ("pers");
+			return aux3.InnerText;
+		} else {
+			return null;
+		}
+	}
+
+	public static int Valorpers(){
+
+		XmlElement aux2;
+		XmlAttribute aux3;
+		int k;
+		aux2 = (XmlElement)root;
+		if (aux2.GetAttributeNode ("valorpers") != null) {
+			aux3 = aux2.GetAttributeNode ("valorpers");
+			k = Convert.ToInt16(aux3.InnerText);
+			return k;
+		} else {
+			return 0;
+		}
+	}
+
 
 
 }

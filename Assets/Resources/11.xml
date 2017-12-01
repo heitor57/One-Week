@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-	<dialogos>
-		<dialogo texto="missao">
-			<dialogo texto="Senhor Orion...">
-				<dialogo texto="Conselheiro...">
-					<dialogo texto="Gostaria de uma aventura?">
-						<dialogo texto="Aventura?">
-							<dialogo texto="Fiquei sabendo estes dias que na região na entrada de Boreas,">
-								<dialogo texto="alguns livros mágicos estão sendo avistados. Pode pegá-los para mim?">
-									
-									
-										<dialogo texto="Livros mágicos, vou sim...eu acho."> </dialogo>
-										<dialogo texto="Livros mágicos? Acho que não tenho muito tempo.">
-											
-										
-									</dialogo>
+<dialogos>
+	<dialogo texto="missao">
+		<dialogo texto="Senhor Orion...">
+			<dialogo texto="Conselheiro...">
+				<dialogo texto="Gostaria de uma aventura?">
+					<dialogo texto="Aventura?">
+						<dialogo texto="Fiquei sabendo estes dias que na região na entrada de Boreas,">
+							<dialogo texto="alguns livros mágicos estão sendo avistados. Pode pegá-los para mim?">
+								<dialogo texto="Livros mágicos, vou sim...eu acho." missao = "12"></dialogo>
+								<dialogo texto="Livros mágicos? Acho que não tenho muito tempo.">
 								</dialogo>
-							
-						
+							</dialogo>
+						</dialogo>
 					</dialogo>
 				</dialogo>
 			</dialogo>
 		</dialogo>
-	</dialogos>
+	</dialogo>
+</dialogos>

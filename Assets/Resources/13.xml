@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+	<dialogos>
+		<dialogo texto="missao">
+			<dialogo texto="Capitão.">
+				<dialogo texto="General, preciso de um favor.">
+					<dialogo texto="Pode dizer.">
+						<dialogo texto="Você, como uma figura importante aqui em Verus,">
+							<dialogo texto="não sabe de nada estranho que esteja ocorrendo?">
+								<dialogo texto="Estranho, bem... alguns comentários estranhos vem surgindo.">
+									<dialogo texto="Todos eles sobre um possível golpe, mas besteira.">
+										<dialogo texto="Claro, besteira, mas se vir ou ouvir algo, me avise." missao = "1"></dialogo>
+										<dialogo texto="Fique atento, podem ser mais que comentários maldosos.">
+											
+										</dialogo>
+									</dialogo>
+								</dialogo>
+							</dialogo>
+						</dialogo>
+					</dialogo>
+				</dialogo>
+			</dialogo>
+		</dialogo>
+	</dialogos>

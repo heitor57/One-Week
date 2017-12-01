@@ -19,7 +19,7 @@ public class NPC : MonoBehaviour {
 	GUIStyle guiStyle = new GUIStyle();
 	bool conversa=false;
 	private GameObject caixa;
-
+	//public Texture2D img;
 
 
 
@@ -31,6 +31,7 @@ public class NPC : MonoBehaviour {
 		guiStyle.alignment = TextAnchor.MiddleCenter;
 		caixa = GameObject.Find ("Dialogs");
 		caixa.GetComponent<Canvas> ().enabled = false;
+		//img = Resources.Load<Texture2D> ("Panel5");
 	}
 	
 	// Update is called once per frame
@@ -63,12 +64,41 @@ public class NPC : MonoBehaviour {
 					if (TesteParser.IDmissao () != null) {
 						GetComponent<Missoes> ().qual (TesteParser.IDmissao());
 					}
+					if (TesteParser.Personalidade() != null) {
+						int k = TesteParser.Valorpers();
+						switch (TesteParser.Personalidade()) {
+						case "bondade":
+							GetComponent<SerVivo> ().SetBondade (GetComponent<SerVivo> ().GetBondade () + k);
+							break;
+						case "carisma":
+							GetComponent<SerVivo> ().SetCarisma (GetComponent<SerVivo> ().GetCarisma () + k);
+							break;
+						case "coragem":
+							GetComponent<SerVivo> ().SetCoragem (GetComponent<SerVivo> ().GetCoragem () + k);
+							break;
+						case "influencia":
+							GetComponent<SerVivo> ().SetInfluencia (GetComponent<SerVivo> ().GetInfluencia () + k);
+							break;
+						case "lealdade":
+							GetComponent<SerVivo> ().SetLealdade (GetComponent<SerVivo> ().GetLealdade () + k);
+							break;
+						case "ameaca":
+							GetComponent<SerVivo> ().SetAmeaca (GetComponent<SerVivo> ().GetAmeaca () + k);
+							break;
+						case "lideranca":
+							GetComponent<SerVivo> ().SetLideranca (GetComponent<SerVivo> ().GetLideranca () + k);
+							break;
+						case "inteligencia":
+							GetComponent<SerVivo> ().SetLealdade (GetComponent<SerVivo> ().GetLealdade () + k);
+							break;
+						}
+					}
 				}
 				if (a.Length == 0) {
 					podeInteragir = false;
 					primeira = true;
 					conversa = false;
-					caixa.GetComponent<Canvas> ().enabled = false;
+					//caixa.GetComponent<Canvas> ().enabled = false;
 				}
 			}else{
 				IAIntegration.TalkNPC (GameObject.Find ("Player"), gameObject, false);			
@@ -76,12 +106,14 @@ public class NPC : MonoBehaviour {
 		}
 	}
 	void OnGUI(){
-		posiX = Screen.width / 2;
-		posiY = Screen.height / 2 + Screen.height / 5;
+		Rect pos = new Rect (0, (Screen.height * 0.7f) , 1000, 100);
 		if (Dist.magnitude < 2)
 			podeInteragir = true;
-		else
+		else {
 			podeInteragir = false;
+			//caixa.GetComponent<Canvas> ().enabled = false;
+			//caixa.transform.GetChild(2).GetComponent<Text>().text=null;
+		}
 		if(!podeInteragir)
 			conversa = false;
 		//AboutAnimal aboutplayer=null;
@@ -95,7 +127,7 @@ public class NPC : MonoBehaviour {
 		if (conversa == false && podeInteragir == true) {
 			//mensagem quando o usuario passar perto de um npc
 			guiStyle.fontSize=20;
-			GUI.Box (new Rect (0, posiY+20, 1000, 100), "Interagir- ENTER",guiStyle);
+			GUI.Box (pos, "Interagir- ENTER",guiStyle);
 			//se o usuario apertar enter a conversa vai começar
 			if (Input.GetKeyDown (KeyCode.Return)) {
 				conversa = true;
@@ -119,40 +151,41 @@ public class NPC : MonoBehaviour {
 					podeInteragir = false;
 					primeira = true;
 					conversa = false;
-					caixa.GetComponent<Canvas> ().enabled = false;
+					//caixa.GetComponent<Canvas> ().enabled = false;
 				}
-				caixa.GetComponent<Canvas> ().enabled = false;
+				//caixa.GetComponent<Canvas> ().enabled = false;
 			} else if (!Input.GetKey (KeyCode.Escape)) {
-				caixa.GetComponent<Canvas> ().enabled = true;
+				//caixa.GetComponent<Canvas> ().enabled = true;
 				for (i = 0; i < (a.Length); i++) {
 					GUI.color = Color.black;
+					//GUI.skin.box.normal.background = img;
 					caixa.transform.GetChild(2).GetComponent<Text>().color = Color.black;
 					if (opcaoConversa == i) {
 						GUI.color = Color.red;
 						//caixa.transform.GetChild(2).GetComponent<Text>().color = Color.red;
 					}
 					posiY = posiY + 10;
-					//GUI.Label (new Rect (posiX, posiY, 1000, 100), a [i]);
+					GUI.Box (pos,a[i],guiStyle);
 					//StartCoroutine ( type (a[i]) );
-					caixa.transform.GetChild(2).GetComponent<Text>().text=a [i];
+					//caixa.transform.GetChild(2).GetComponent<Text>().text=a [i];
 				} 
 
 			} else {
 				podeInteragir = false;
 				primeira = true;
 				conversa = false;
-				caixa.GetComponent<Canvas> ().enabled = false;
+				//caixa.GetComponent<Canvas> ().enabled = false;
 			}
 		}
 
 
 	}
-	IEnumerator type(string myText){
+	/*IEnumerator type(string myText){
 		
 		foreach (var x in myText.ToCharArray()) {
 			caixa.transform.GetChild(2).GetComponent<Text>().text += x;
 			yield return new WaitForSecondsRealtime (0.2f);
 		}
-	}
+	}*/
 }
 

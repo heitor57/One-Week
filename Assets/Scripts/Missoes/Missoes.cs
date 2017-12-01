@@ -8,13 +8,13 @@ public class Missoes : MonoBehaviour {
 	private string nome;//Nome que descreve a missão.Ex: Coleta de rochas
 	public bool concluida=false;//Variável para verificação se a missão foi ou não concluida
 	private int xp,quantidade;
-	private CharacterBase cb;
 	private int recompensaID,pedidoID;
 	private string tipo;
 	public int cont=0;
 	private PlayerInventory inventario;
 	private List<Item> itensNoInventario;
 	private bool feito;
+	private CharacterBase cb;
 	private GameObject c;//Completou Missao
 	public Missao missao;
 	public TextAsset xml;
@@ -23,9 +23,9 @@ public class Missoes : MonoBehaviour {
 
 	public void Start(){
 		cb = GameObject.Find ("Player").GetComponent<PlayerBehaviour> ();
-		inventario = GameObject.Find("Player").GetComponent<PlayerInventory>();
 		c = GameObject.Find("Congratulations");
 		c.GetComponent<Canvas> ().enabled = false;
+		inventario = GameObject.Find("Player").GetComponent<PlayerInventory>();
 		inventoryItemList = (ItemDataBaseList)Resources.Load("ItemDatabase");
 	}
 
@@ -74,10 +74,14 @@ public class Missoes : MonoBehaviour {
 		return xp;
 	}
 	//Metodos Construtores
-	public Missoes(string nome,int xp,string tipo){
+	public Missoes(string nome,int xp,string tipo,int pedidoID, int quantidade){
 		this.nome = nome;
 		this.xp = xp;
 		this.tipo = tipo;
+		if (tipo == "coleta") {
+			this.pedidoID = pedidoID;
+			this.quantidade = quantidade;
+		}
 	}
 	public Missoes(string nome,int xp,string tipo,int recompensaID){
 		this.nome = nome;
@@ -96,6 +100,7 @@ public class Missoes : MonoBehaviour {
 	}*/
 	public void Update () {
 		if(concluida==true && primeira==false){
+			//if(pedidoID == )
 			cb.Aumentarxp (xp);
 			c.GetComponent<Canvas> ().enabled = true;
 			c.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = ("\n" + this.getNome () + "\t" + this.cont + "/" + this.missao.quantidade);

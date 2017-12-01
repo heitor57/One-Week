@@ -9,11 +9,11 @@
 								<dialogo texto="Do castelo? Como posso ajudar.">
 									<dialogo texto="Procure pelo bibliotecário de Boreas,">
 										<dialogo texto="O senhor Novaes, ele pode lhe contar tudo.">
-										<dialogo texto="Novaes? Era ver ele que eu iria mesmo."> </dialogo>
+											<dialogo texto="Novaes? Era ver ele que eu iria mesmo."> </dialogo>
+										</dialogo>
 										<dialogo texto="Tem certeza? Aquele cara anda muito estranho nos ultimos tempos, ">
 											<dialogo texto="vou pensar sobre isso."></dialogo>
-										
-									</dialogo>
+										</dialogo>
 								</dialogo>
 							</dialogo>
 						</dialogo>
@@ -21,4 +21,4 @@
 				</dialogo>
 			</dialogo>
 		</dialogo>
-	</dialogos>
+	</dialogo>

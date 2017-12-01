@@ -7,16 +7,11 @@
 						<dialogo texto="Satanás?Que nome...">
 							<dialogo texto="Ele era o cão de meu pai, o ultimo do clero de Sperare, Padre Lactio.">
 								<dialogo texto="Pode procurá-lo para mim?">
-									
-									
-										<dialogo texto="Farei o possivel para encontrar Satanás."> </dialogo>
-										<dialogo texto="Receio que seja muito complicado encontrá-lo.">
-											
-										
-									</dialogo>
+									<dialogo texto="Farei o possivel para encontrar Satanás."> </dialogo>
+									<dialogo texto="Receio que seja muito complicado encontrá-lo."></dialogo>	
 								</dialogo>
-							
-						
+							</dialogo>
+						</dialogo>
 					</dialogo>
 				</dialogo>
 			</dialogo>

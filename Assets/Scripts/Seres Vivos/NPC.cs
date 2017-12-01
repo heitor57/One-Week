@@ -114,18 +114,21 @@ public class NPC : MonoBehaviour {
 			//caixa.GetComponent<Canvas> ().enabled = false;
 			//caixa.transform.GetChild(2).GetComponent<Text>().text=null;
 		}
+		if(podeInteragir){
+			//Parte IA - Começo
+			AboutAnimal aboutplayer=null;
+			foreach(AboutAnimal animal in GetComponent<RAIN.Core.AIRig> ().AI.WorkingMemory.GetItem<List<AboutAnimal>>("aboutanimal")){
+				if (animal.Target == GameObject.Find ("Player")) {
+					aboutplayer = animal;
+				}
+			}
+			if(aboutplayer.Target != null && (aboutplayer.isEnemy(GetComponent<SerVivo>()) || aboutplayer.isEnemyWeak(GetComponent<SerVivo>())))
+				podeInteragir = false;
+			//Parte IA - Fim
+		}
 		if(!podeInteragir)
 			conversa = false;
-		//Parte IA - Começo
-		AboutAnimal aboutplayer=null;
-		foreach(AboutAnimal animal in GetComponent<RAIN.Core.AIRig> ().AI.WorkingMemory.GetItem<List<AboutAnimal>>("aboutanimal")){
-			if (animal.Target == GameObject.Find ("Player")) {
-				aboutplayer = animal;
-			}
-		}
-		if(aboutplayer.Target != null && (aboutplayer.isEnemy(GetComponent<SerVivo>()) || aboutplayer.isEnemyWeak(GetComponent<SerVivo>())))
-			podeInteragir = false;
-		//Parte IA - Fim
+		
 		if (conversa == false && podeInteragir == true) {
 			//mensagem quando o usuario passar perto de um npc
 			guiStyle.fontSize=20;

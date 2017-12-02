@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using RAIN.Core;
 public class MessagesList{
 	public List<string> messageslist_default=new List<string>(),

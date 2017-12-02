@@ -50,7 +50,7 @@ public class Up : MonoBehaviour {
 		return false;
 	}
 	public void Acionar(){
-		if (!ativado) {
+		
 			sauce.PlayOneShot (som, 0.7F);
 			pai.transform.GetChild (0).GetComponent<Text> ().color = Color.white;
 			player.GetComponent<PlayerBehaviour> ().setUP (player.GetComponent<PlayerBehaviour> ().GetUP () - ptsPraUpar);
@@ -68,7 +68,7 @@ public class Up : MonoBehaviour {
 			ativado = true;
 			c.SetActive (true);
 			player.GetComponent<PlayerBehaviour> ().melhorar (vidaUP, stmUP, xpUP, habilidade);
-		} /*else {
+		 /*else {
 
 		}*/
 	}

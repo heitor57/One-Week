@@ -11,13 +11,14 @@ public class MenuPrincipalFinal : MonoBehaviour {
 	public Text percent;
 
 	void Start () {
-		loadingBar.fillAmount = 0;
+		
 	}
 	public void Iniciar(int sceneIndex){
 		Screen.lockCursor=true;
 		StartCoroutine(LoadAsynchronously(sceneIndex));
 	}
 	IEnumerator LoadAsynchronously(int sceneIndex){
+		loadingBar.fillAmount = 0;
 		loadingScreen.SetActive (true);
 		AsyncOperation operation = SceneManager.LoadSceneAsync (sceneIndex);
 

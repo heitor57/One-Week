@@ -12,7 +12,6 @@
 										<dialogo texto="Realmente, posso ir até Verus ver o que encontro."> </dialogo>
 										<dialogo texto="Acho que não seria nada mal buscar informações ">
 											<dialogo texto="com os bandoleiros dessas bandas, eles costumam saber de tudo."></dialogo>
-										
 									</dialogo>
 								</dialogo>
 							</dialogo>
@@ -21,4 +20,7 @@
 				</dialogo>
 			</dialogo>
 		</dialogo>
+	</dialogo>
+	</dialogo>
+	</dialogos>
 	

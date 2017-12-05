@@ -172,6 +172,7 @@ public class NPC : MonoBehaviour {
 						//caixa.transform.GetChild(2).GetComponent<Text>().color = Color.red;
 					}
 					posiY = posiY + 10;
+					pos = new Rect (0, posiY, 1000, 100);
 					GUI.Box (pos,a[i],guiStyle);
 					//StartCoroutine ( type (a[i]) );
 					//caixa.transform.GetChild(2).GetComponent<Text>().text=a [i];

@@ -11,7 +11,6 @@ public class Puxa {
 			a = Random.Range (1, 57);
 			b = "Aldeao (" + a + ")";
 			c = GameObject.Find (b);
-			Debug.Log (c);
 
 		}
 		c.AddComponent<Marcacao> ();

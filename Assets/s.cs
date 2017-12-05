@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class s : MonoBehaviour {
-	Vector3 Dist;
+	public Vector3 Dist;
 	public bool finall = false;
+	public float test;
 	float posiX,posiY;
 	public bool podeInteragir=false;
 	GUIStyle guiStyle = new GUIStyle();
@@ -31,6 +32,7 @@ public class s : MonoBehaviour {
 	void OnGUI(){
 		posiX = 0;
 		posiY = Screen.height / 2 + Screen.height / 5;
+		test = Dist.magnitude;
 		if (Dist.magnitude < 2)
 			podeInteragir = true;
 		else 

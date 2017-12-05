@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Sangue : MonoBehaviour {
 	Vector3 Dist;
+	public float tes;
 	public bool finall = false;
 	float posiX,posiY;
 	public bool podeInteragir=false;
@@ -30,8 +31,9 @@ public class Sangue : MonoBehaviour {
 	void OnGUI(){
 		posiX = 0;
 		posiY = Screen.height / 2 + Screen.height / 5;
-		float distance = Vector3.Distance(this.gameObject.transform.position, Dist);
-		if (distance < 2)
+		tes = Dist.magnitude;
+
+		if (Dist.magnitude < 2)
 			podeInteragir = true;
 		else 
 			podeInteragir = false;

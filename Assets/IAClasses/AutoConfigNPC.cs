@@ -18,7 +18,7 @@ public abstract class AutoConfigNPC : AutoConfig {
 		navmeshagent.angularSpeed = 999;
 		navmeshagent.acceleration = 999;
 		navmeshagent.baseOffset = 0;
-
+		navmeshagent.obstacleAvoidanceType = ObstacleAvoidanceType.LowQualityObstacleAvoidance; 
 
 		AIRig ai = GetComponent<AIRig> ();
 		//Adicionando partes do corpo no animador

@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//Script referente a uma missão de coleta do jogo -> player localizar e coletar um machado que está em um dos acampamentos de bandidos no mapa
+
+using System.Collections;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +8,7 @@ using UnityEngine.UI;
 
 public class Machado_CAbana : MonoBehaviour {
 	Vector3 Dist;
-	public bool final2 = false;
+	public bool final4 = false;
 	float posiX,posiY;
 	public bool podeInteragir=false;
 	GUIStyle guiStyle = new GUIStyle();
@@ -36,6 +38,7 @@ public class Machado_CAbana : MonoBehaviour {
 			podeInteragir = true;
 		else 
 			podeInteragir = false;
+		//Menssagem de interagir ao chegar no machado
 		if (conversa == false && podeInteragir == true) {
 			guiStyle.fontSize = 20;
 			GUI.Box (new Rect (0, posiY + 20, 1000, 100), "Interagir - E", guiStyle);
@@ -44,7 +47,7 @@ public class Machado_CAbana : MonoBehaviour {
 			}
 		}
 
-		if (conversa) {
+		if (conversa) {//Texto apresentado no fim da missão ao se encontrar e coletar o machado
 			conversa = false;
 			cb.Aumentarxp (250);
 			c.GetComponent<Canvas> ().enabled = true;
@@ -56,7 +59,7 @@ public class Machado_CAbana : MonoBehaviour {
 				c.GetComponent<Canvas> ().enabled = false;
 				enabled = false;
 			}
-			final2 = true;
+			final4 = true;
 		}
 
 	}

@@ -67,6 +67,10 @@ public class Missoes : MonoBehaviour {
 		this.nome = nome;
 	} 
 
+	public void setQuant(int q){		
+		quantidade-=q;
+		if (quantidade < 0) quantidade = 0;
+	} 
 	public void setConcluida(bool concluida){
 		this.concluida = concluida;
 	} 

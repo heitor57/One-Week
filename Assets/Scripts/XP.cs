@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class XP : MonoBehaviour {
 
-	public int xp;
-
 	public int darXP(float mult){
-		return (int)(xp * mult);
+		return (int)(Random.Range(8,40) * mult);
 	}
 }

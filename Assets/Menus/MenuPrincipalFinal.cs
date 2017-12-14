@@ -6,34 +6,32 @@ using UnityEngine.SceneManagement;
 
 public class MenuPrincipalFinal : MonoBehaviour {
 
-	public GameObject loadingScreen;
+	public GameObject loadingScreen,MP;
 	public Image loadingBar;
 	public Text percent;
 
-	void Start () {
-		
+	void Start(){
+		Cursor.visible = true;
 	}
 	public void Iniciar(int sceneIndex){
-		Screen.lockCursor=true;
-		StartCoroutine(LoadAsynchronously(sceneIndex));
+		Cursor.visible = false;
+		StartCoroutine( LoadAsynchronously(sceneIndex) );
 	}
-	IEnumerator LoadAsynchronously(int sceneIndex){
+
+	public IEnumerator LoadAsynchronously(int sceneIndex){
 		loadingBar.fillAmount = 0;
 		loadingScreen.SetActive (true);
 		AsyncOperation operation = SceneManager.LoadSceneAsync (sceneIndex);
-
 		while (!operation.isDone) {
 			float progress = Mathf.Clamp01 (operation.progress / .9f);
-			if (progress > 99)
-				progress = 99;
+			if (progress > 99) progress = 99;
 			loadingBar.fillAmount = progress;
 			percent.text = (loadingBar.fillAmount * 100).ToString ("f0");
+			MP.SetActive(false);
 			yield return null;
 		}
-		GameObject.Find ("MenuInicial").GetComponent<Canvas> ().enabled = false;
-		enabled = false;
-
 	}
+
 	public void Sair(){
 		Application.Quit();
 	}

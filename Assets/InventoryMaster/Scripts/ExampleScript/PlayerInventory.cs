@@ -205,16 +205,16 @@ public class PlayerInventory : MonoBehaviour
 
         if (HPCanvas != null)
         {
-			armorTxt = HPCanvas.transform.GetChild(1).GetChild(0).GetComponent<Text>();
-            hpText = HPCanvas.transform.GetChild(2).GetChild(0).GetComponent<Text>();
-            stmText = HPCanvas.transform.GetChild(3).GetChild(0).GetComponent<Text>();
-			xpText = HPCanvas.transform.GetChild(4).GetChild(0).GetComponent<Text>();
+			armorTxt = HPCanvas.transform.GetChild(2).GetChild(0).GetComponent<Text>();
+            hpText = HPCanvas.transform.GetChild(3).GetChild(0).GetComponent<Text>();
+            stmText = HPCanvas.transform.GetChild(4).GetChild(0).GetComponent<Text>();
+			xpText = HPCanvas.transform.GetChild(5).GetChild(0).GetComponent<Text>();
 			cLevel = HPCanvas.transform.GetChild(6).GetComponent<Text>();
 
-			armorImg = HPCanvas.transform.GetChild(1).GetComponent<Image>();
-			xpImage = HPCanvas.transform.GetChild(4).GetComponent<Image>();
-            hpImage = HPCanvas.transform.GetChild(2).GetComponent<Image>();
-            stmImage = HPCanvas.transform.GetChild(3).GetComponent<Image>();
+			armorImg = HPCanvas.transform.GetChild(2).GetComponent<Image>();
+			xpImage = HPCanvas.transform.GetChild(5).GetComponent<Image>();
+            hpImage = HPCanvas.transform.GetChild(3).GetComponent<Image>();
+            stmImage = HPCanvas.transform.GetChild(4).GetComponent<Image>();
 
             UpdateHPBar();
 			UpdateArmorBar ();
@@ -240,8 +240,9 @@ public class PlayerInventory : MonoBehaviour
 
     void UpdateHPBar()
     {
+		maxHealth = GetComponent<PlayerBehaviour> ().basicStats.GetLife ();
 		currentHealth=GetComponent<PlayerBehaviour>().GetVida();
-        hpText.text = (currentHealth + "/" + maxHealth);
+		hpText.text = ((int)currentHealth + "/" + maxHealth);
         float fillAmount = currentHealth / maxHealth;
 		hpImage.fillAmount = fillAmount;
     }
@@ -253,6 +254,7 @@ public class PlayerInventory : MonoBehaviour
 
     void UpdateStmBar()
     {
+		maxStm = GetComponent<PlayerBehaviour> ().basicStats.GetStm ();
 		currentStamina=GetComponent<PlayerBehaviour>().GetSTM();
 		stmText.text = ((int)currentStamina + "/" + maxStm);
         float fillAmount = currentStamina / maxStm;

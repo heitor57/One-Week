@@ -5,14 +5,14 @@ using UnityEngine;
 
 [System.Serializable]
 public class BasicStats  {
-	
-	public float startLife;
-	public float startStm;
-	public int strenght;
-	public int agility;
-	public float baseAttack;
-	public float baseDefense;
 
+	public float startLife; //vida inicial
+	public float startStm; //stamina/ fôlego inicial
+	public int strenght; //força //bem provavel a nao implementação
+	public int agility; //não implementado
+	public float baseAttack;//força de ataque inicial
+	public float baseDefense;//defesa inicial
+	//Getters & Setters
 	public void SetSTM(float a){
 		this.startStm =a ;
 	}
@@ -56,20 +56,21 @@ public abstract class CharacterBase : PlayerStatsController {
 
 	public Animator animator;
 	//Basic attributes
-	public int currentLevel;// = GetCurrentLevel();
-	public int currentXP;// = GetCurrentXP();
+	public int currentLevel;//nivel atual
+	public int currentXP;//xp atual
 	public BasicStats basicStats;
-
+	public int covX,picX;
 
 	// Use this for initialization
-	protected void Awake () {
-		
-		SetVida (basicStats.startLife);
-		SetDano (basicStats.baseAttack);
-		this.currentXP = GetCurrentXP ();
-		this.currentLevel = GetCurrentLevel ();
+	protected void Awake () {		
+		SetVida (basicStats.startLife);//pega da classe literalmente acima
+		SetDano (basicStats.baseAttack);// ~//~
+		this.currentXP = GetCurrentXP ();//pega de PlayerStatsController
+		this.currentLevel = GetCurrentLevel ();// ~//~
+		covX=0;
+		picX = 0;
 	}
-
+	//funções autoexplicativas
 	public CharacterBase b(){
 		return this;
 	}
@@ -83,7 +84,4 @@ public abstract class CharacterBase : PlayerStatsController {
 		currentLevel = GetCurrentLevel()+i;
 		SetCurrentLevel (this.currentLevel);
 	}
-	// Update is called once per frame
-
-
 }

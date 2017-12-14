@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿//Menssagem referente a missão de rastreamento de 2 seres pelo mapa
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class s : MonoBehaviour {
 	public Vector3 Dist;
-	public bool finall = false;
+	public bool final1 = false;
 	float posiX,posiY;
 	public bool podeInteragir=false;
 	GUIStyle guiStyle = new GUIStyle();
@@ -36,7 +37,7 @@ public class s : MonoBehaviour {
 		else 
 			podeInteragir = false;
 		if (conversa == false && podeInteragir == true) {
-			//mensagem quando o usuario passar perto de um npc
+			//mensagem quando o usuario passar perto de um rastro de sangue
 			guiStyle.fontSize = 20;
 			GUI.Box (new Rect (0, posiY + 20, 1000, 100), "Interagir- ENTER", guiStyle);
 			//se o usuario apertar enter a conversa vai começar
@@ -45,19 +46,20 @@ public class s : MonoBehaviour {
 			}
 		}
 
-		if (conversa) {
+		if (conversa) {//Texto apresentado no fim da missão ao se localizar o rastro de sangue
 			conversa = false;
 			cb.Aumentarxp (250);
 			c.SetActive(true);
 			c.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = ("Algo ou alguém padeceu aqui.\n Devido as marcas de garras e aos pelos jogados na terra, acho algum cão foi morto aqui.");
 			c.transform.GetChild(0).GetChild(3).GetComponent<Text>().text = ("250 Pontos de Experiência");
+
 			c.GetComponent<Animation>().enabled=true;
 			if (Input.GetKey (KeyCode.Return) || Input.GetKey (KeyCode.KeypadEnter)) {
 				c.GetComponent<Animation>().enabled=false;
 				c.SetActive(false);
 				enabled = false;
 			}
-			finall = true;
+			final1 = true;
 		}
 
 	}

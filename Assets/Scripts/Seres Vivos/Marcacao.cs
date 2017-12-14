@@ -20,7 +20,9 @@ public class Marcacao : MonoBehaviour {
 		}
 	}
 	public void Destroi(){
+		
 		Destroy (b);
+
 	}
 
 }

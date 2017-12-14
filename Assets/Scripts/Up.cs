@@ -10,12 +10,14 @@ public class Up : MonoBehaviour {
 	public AudioClip som;
 	public GameObject pai,avo;
 	public GameObject c;//Congrats
-	public int vidaUP,xpUP,stmUP,habilidade;
+	public int vidaUP,stmUP,habilidade;
+	public float xpUP;
 	public string melhora="";
 	public Button bt;
 	public bool ativado;
 	public int pUps;
 	public int nvsAtivos;
+	public Text pontos;
 
 	// Use this for initialization
 	void Awake () {
@@ -25,13 +27,13 @@ public class Up : MonoBehaviour {
 		sauce = GetComponent<AudioSource>();
 		c = GameObject.Find("Congratulations");
 		bt = GetComponent<Button> ();
+		pontos = avo.transform.parent.GetChild (10).GetComponentInChildren<Text> ();
 	}
 	void Update(){
 		pUps = player.GetComponent<PlayerBehaviour> ().GetUP ();
-		if (taNoNivel()) {
-			if (pUps >= ptsPraUpar) {
+		pontos.text = pUps.ToString();
+		if (taNoNivel() && pUps >= ptsPraUpar) {
 				bt.interactable = true;
-			}
 		}
 	}
 	bool taNoNivel(){
@@ -50,14 +52,14 @@ public class Up : MonoBehaviour {
 		return false;
 	}
 	public void Acionar(){
-		
+		if (!ativado && pUps >= ptsPraUpar) {
 			sauce.PlayOneShot (som, 0.7F);
 			pai.transform.GetChild (0).GetComponent<Text> ().color = Color.white;
 			player.GetComponent<PlayerBehaviour> ().setUP (player.GetComponent<PlayerBehaviour> ().GetUP () - ptsPraUpar);
 			if (vidaUP > 0)
 				melhora += "Vida Aumentada para " + vidaUP;
 			if (xpUP > 0)
-				melhora += "Pontos de Experiência valem" + (xpUP + player.GetComponent<PlayerBehaviour> ().xpMultiply) + "x Mais";
+				melhora += "Pontos de Experiência valem " + (xpUP + player.GetComponent<PlayerBehaviour> ().xpMultiply) + "x Mais";
 			if (stmUP > 0)
 				melhora += "Fôlego aumentado em " + stmUP;
 			if (habilidade > 0)
@@ -68,6 +70,8 @@ public class Up : MonoBehaviour {
 			ativado = true;
 			c.SetActive (true);
 			player.GetComponent<PlayerBehaviour> ().melhorar (vidaUP, stmUP, xpUP, habilidade);
+
+		}
 		 /*else {
 
 		}*/

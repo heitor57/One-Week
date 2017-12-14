@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//Menssagem referente a missão de rastreamento de 2 seres pelo mapa
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,7 +7,7 @@ using UnityEngine.UI;
 public class Sangue : MonoBehaviour {
 	Vector3 Dist;
 	public float tes;
-	public bool finall = false;
+	public bool final2 = false;
 	float posiX,posiY;
 	public bool podeInteragir=false;
 	GUIStyle guiStyle = new GUIStyle();
@@ -38,7 +39,7 @@ public class Sangue : MonoBehaviour {
 		else 
 			podeInteragir = false;
 		if (conversa == false && podeInteragir == true) {
-			//mensagem quando o usuario passar perto de um npc
+			//mensagem quando o usuario passar perto de um rastro de sangue
 			guiStyle.fontSize = 20;
 			GUI.Box (new Rect (0, posiY + 20, 1000, 100), "Interagir- ENTER", guiStyle);
 			//se o usuario apertar enter a conversa vai começar
@@ -47,7 +48,7 @@ public class Sangue : MonoBehaviour {
 			}
 		}
 
-		if (conversa) {
+		if (conversa) {//Texto apresentado no fim da missão ao se localizar o rastro de sangue
 			conversa = false;
 			cb.Aumentarxp (250);
 			c.SetActive(true);
@@ -59,7 +60,7 @@ public class Sangue : MonoBehaviour {
 				c.SetActive(false);
 				enabled = false;
 			}
-			finall = true;
+			final2 = true;
 		}
 
 	}

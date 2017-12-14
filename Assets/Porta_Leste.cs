@@ -1,11 +1,13 @@
-﻿using System.Collections;
+﻿//Missão referente ao terceiro dia de jogo -> player ir até a cidade do leste, na casa do capitão e interagrir com ela
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Porta_Leste : MonoBehaviour {
 	Vector3 Dist;
-	public bool finall = false;
+	public bool final3 = false;
 	float posiX,posiY;
 	public bool podeInteragir=false;
 	GUIStyle guiStyle = new GUIStyle();
@@ -19,10 +21,12 @@ public class Porta_Leste : MonoBehaviour {
 		guiStyle.alignment = TextAnchor.MiddleCenter;
 		cb = GameObject.Find ("Player").GetComponent<PlayerBehaviour> ();
 		c = GameObject.Find("Congratulations");
-		c.GetComponent<Animation>().enabled=false;
-		c.SetActive(false);
+		StartCoroutine (Wait());
 	}
-
+	IEnumerator Wait(){
+		yield return new WaitForSecondsRealtime (3);
+		//c.SetActive (false);
+	}
 	void Update(){
 		Dist = GameObject.Find ("Player").transform.position;
 		Dist = Dist - transform.position;
@@ -36,7 +40,7 @@ public class Porta_Leste : MonoBehaviour {
 		else 
 			podeInteragir = false;
 		if (conversa == false && podeInteragir == true) {
-			//mensagem quando o usuario passar perto de um npc
+			//Menssagem de interagir ao chegar na casa no terceiro dia
 			guiStyle.fontSize = 20;
 			GUI.Box (new Rect (0, posiY + 20, 1000, 100), "Interagir- ENTER", guiStyle);
 			//se o usuario apertar enter a conversa vai começar
@@ -45,7 +49,7 @@ public class Porta_Leste : MonoBehaviour {
 			}
 		}
 
-		if (conversa) {
+		if (conversa) {//Texto apresentado no fim da missão ao se encontrar e coletar o machado
 			conversa = false;
 			cb.Aumentarxp (250);
 			c.SetActive(true);
@@ -57,7 +61,7 @@ public class Porta_Leste : MonoBehaviour {
 				c.SetActive(false);
 				enabled = false;
 			}
-			finall = true;
+			final3 = true;
 		}
 
 	}

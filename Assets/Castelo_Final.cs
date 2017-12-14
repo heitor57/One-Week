@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//Script referente a ultima missao do jogo -> player chegar até o castelo em Verus
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,17 +11,16 @@ public class Castelo_Final : MonoBehaviour {
 	public bool podeInteragir=false;
 	GUIStyle guiStyle = new GUIStyle();
 	bool conversa=false;
+	string fim;
 	private CharacterBase cb;
-	private GameObject c;//Completou Missao
+	public bool finaly = false;
+	//private GameObject c;//Completou Missao
 	// Use this for initialization
 	void Start () {
 		Dist = GameObject.Find ("Player").transform.position;
 		Dist = Dist - transform.position;
 		guiStyle.alignment = TextAnchor.MiddleCenter;
 		cb = GameObject.Find ("Player").GetComponent<PlayerBehaviour> ();
-		c = GameObject.Find("Congratulations");
-		c.GetComponent<Animation>().enabled=false;
-		c.SetActive(false);
 	}
 
 	void Update(){
@@ -27,7 +28,7 @@ public class Castelo_Final : MonoBehaviour {
 		Dist = Dist - transform.position;
 	}
 	// Update is called once per frame
-	void OnGUI(){
+	void OnGUI(){//Menssagem de permissao parao player interagir com o castelo
 		posiX = 0;
 		posiY = Screen.height / 2 + Screen.height / 5;
 		if (Dist.magnitude < 2)
@@ -35,29 +36,15 @@ public class Castelo_Final : MonoBehaviour {
 		else 
 			podeInteragir = false;
 		if (conversa == false && podeInteragir == true) {
-			//mensagem quando o usuario passar perto de um npc
+			//Menssagem de interagir ao chegar no castelo ao sétimo dia
 			guiStyle.fontSize = 20;
 			GUI.Box (new Rect (0, posiY + 20, 1000, 100), "Entrar - ENTER", guiStyle);
-			//se o usuario apertar enter a conversa vai começar
+			//Chamada para gerar a tela de fim de jogo qye consequentemente levará aos créditos
 			if (Input.GetKeyDown (KeyCode.Return)) {
+				finaly=true;
+				GameObject.Find("Final").GetComponent<Final>().geraFim ();
 				conversa = true;
 			}
 		}
-
-		if (conversa) {
-			/*if (finall) {
-				fim += "BLABLABLA";
-			}
-			if (final2) {
-				fim += "HUEHUEHUE";
-			}
-			if (finall == true)&&(final2) {
-				fim += "AUHSHASUHASUHASUSHUASH";
-			}
-			if(frugal){
-				fim+= "hfuygwefygwqefuywqef";
-			}*/
-		}
-
 	}
 }

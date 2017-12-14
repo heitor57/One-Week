@@ -23,14 +23,14 @@ public class Armor : MonoBehaviour {
 			transform.position = attachPointposi;
 			transform.eulerAngles = attachPointangle;
 		} else {
-			Destroy (gameObject);
+			//Destroy (gameObject);
 		}
 	}
 
 	public void Tronco(){
-		attachPointposi = transform.parent.Find ("Trapezio").position;
-		this.attachPointposi += new Vector3 (0,0,0);
-		attachPointangle = transform.parent.Find ("Trapezio").eulerAngles;
-		this.attachPointangle += new Vector3 (0,0,0);
+		attachPointposi = transform.parent.Find ("mixamorig:Hips").Find ("mixamorig:Spine").Find ("mixamorig:Spine1").Find ("mixamorig:Spine2").Find("mixamorig:Neck").position;
+		this.attachPointposi += new Vector3 (0f,0f,0f);
+		attachPointangle = transform.parent.Find ("mixamorig:Hips").Find ("mixamorig:Spine").Find ("mixamorig:Spine1").Find ("mixamorig:Spine2").Find("mixamorig:Neck").eulerAngles;
+		this.attachPointangle += new Vector3 (0f,0f,0f);
 	}
 }

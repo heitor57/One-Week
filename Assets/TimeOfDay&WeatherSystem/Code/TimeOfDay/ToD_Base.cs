@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using UnityEngine.SceneManagement;
+
 /// <summary>
 /// Base: Time of Day
 /// </summary>
@@ -224,9 +224,8 @@ public class ToD_Base : MonoBehaviour
 	private string myText;
 	private AudioSource audio;
 	private bool foi=false,acabou=false;
-	private GameObject loadingScreen;
-	private Image loadingBar;
 	private Porta_Leste pl;
+	private Castelo_Final cf;
 
 	/// <summary>
 	/// Unity function - See Unity documentation
@@ -248,12 +247,11 @@ public class ToD_Base : MonoBehaviour
 		Dias = GameObject.Find ("Dias");
 		audio = Dias.transform.GetChild (1).GetComponent<AudioSource> ();
 
-		loadingScreen = GameObject.Find ("loadingScreen");
-		loadingBar = loadingScreen.transform.GetChild (0).GetComponent<Image>();
-		loadingScreen.GetComponent<Canvas>().enabled=false;
-
 		pl = GameObject.Find ("Mapa/Itens_Mapa/Casa dos Capitães (1)").GetComponent<Porta_Leste> ();
 		pl.enabled = false;
+
+		cf = GameObject.Find ("Mapa/Itens_Mapa/Castelo").GetComponent<Castelo_Final> ();
+		cf.enabled = false;
 
 //		if (Dias != null)
 //			Debug.Log ("Dias:" + Dias.transform.GetChild(0).childCount);
@@ -278,7 +276,7 @@ public class ToD_Base : MonoBehaviour
 		UpdateSunAndMoon ();
 		UpdateTimeset ();
 
-		if (_iAmountOfDaysPlayed==0 && !foi) {
+		if (_iAmountOfDaysPlayed==0 && !foi) {//Menssagem que ira aparecer na tela para o jogador emseu primeiro dia no jogo
 			Time.timeScale = 0;
 			StartCoroutine(type ("O quê?\n\tComo assim? O que aconteceu? Eu...\n\tAqueles espiões...\n\tPreciso encontra-los... e eliminá-los antes do golpe.\n\tNão posso permitir que eles apoem o Regente!"));
 			foi = true;
@@ -311,7 +309,7 @@ public class ToD_Base : MonoBehaviour
 			Dias.transform.GetChild (0).GetChild (1).GetComponent<Text> ().text = (_iAmountOfDaysPlayed).ToString ();
 			Dias.GetComponent<Canvas> ().enabled = true;
 			Time.timeScale = 0;
-			switch (_iAmountOfDaysPlayed) {
+			switch (_iAmountOfDaysPlayed) {//Switch de menssagens para cada um dos dias - segundo ao setimo
 			case 1:
 				{
 					StartCoroutine(type ( "Investigarei os acampamentos de bandidos no Leste \tprocurando pelo machado de Sr.Sthiler"));
@@ -344,11 +342,13 @@ public class ToD_Base : MonoBehaviour
 			case 6:
 				{
 					StartCoroutine(type ( "O Golpe é hoje.\n\tPreciso chegar em Verus."));
+					cf.enabled = true;
+					GameObject.Find("Final").GetComponent<Final>().setFinaly();
 				}
 				break;
 			case 7:
 				{
-					StartCoroutine (LoadAsynchronously (2));
+					GameObject.Find("Final").GetComponent<Final>().geraFim ();
 				}
 				break;
 			}  
@@ -357,7 +357,7 @@ public class ToD_Base : MonoBehaviour
 				gWeatherMaster.GetComponent<Weather_Controller> ().GetSet_iAmountOfDaysSinceLastWeather += 1;
 		}
 	}
-	IEnumerator type(string myText){
+	IEnumerator type(string myText){//Efeito de digitação para o texto na tela de dias
 		Dias.transform.GetChild(0).GetChild(0).GetComponent<Text>().enabled=false;
 		Dias.transform.GetChild(0).GetChild(1).GetComponent<Text>().enabled=false;
 		Dias.transform.GetChild (0).GetChild (2).GetComponent<Text> ().text = "Orion:\n\t";
@@ -372,18 +372,7 @@ public class ToD_Base : MonoBehaviour
 		Dias.transform.GetChild(0).GetChild(1).GetComponent<Text>().enabled=true;
 		Dias.transform.GetChild(0).GetChild(3).GetComponent<Text>().enabled=true;
 	}
-	IEnumerator LoadAsynchronously(int sceneIndex){
-		loadingBar.fillAmount = 0;
-		loadingScreen.GetComponent<Canvas>().enabled=true;
-		AsyncOperation operation = SceneManager.LoadSceneAsync (sceneIndex);
 
-		while (!operation.isDone) {
-			loadingBar.fillAmount =  Mathf.Clamp01 (operation.progress / .9f);
-			yield return null;
-		}
-		enabled = false;
-
-	}
 	/// <summary>
 	/// This is used inside Unitys Update() to update our SUN and MOON (if you have the MOON turned on). 
 	/// </summary>
@@ -398,7 +387,7 @@ public class ToD_Base : MonoBehaviour
 
 
 
-	void UpdateTimeset ()
+	void UpdateTimeset ()//Alternação entre os horários do dia
 	{
 		if (_fCurrentTimeOfDay >= _fStartingSunrise && _fCurrentTimeOfDay <= _fStartingDay && enCurrTimeset != Timeset.SUNRISE)
 			SetCurrentTimeset (Timeset.SUNRISE);

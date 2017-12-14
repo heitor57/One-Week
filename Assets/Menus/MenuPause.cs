@@ -18,7 +18,7 @@ public class MenuPause : MonoBehaviour {
 		//MonoBehaviour[] components;
 		Pausado=false;
 		Time.timeScale=1;
-		mc = GameObject.Find ("Map Camera");
+		//mc = GameObject.Find ("Map Camera");
 		HP = GameObject.Find ("HPCanvas");
 	}
 	
@@ -50,7 +50,7 @@ public class MenuPause : MonoBehaviour {
 		//inventario.enabled=false;
 		Cursor.visible=true;
 		Pausado=true;
-		mc.SetActive (false);
+		//mc.SetActive (false);
 		HP.SetActive (false);
 		Time.timeScale=0;
 
@@ -66,7 +66,7 @@ public class MenuPause : MonoBehaviour {
 		//inventario.enabled=true;
 		Cursor.visible = false;
 		Pausado=false;
-		mc.SetActive (true);
+		//mc.SetActive (true);
 		HP.SetActive (true);
 		Time.timeScale=1;
 	}
